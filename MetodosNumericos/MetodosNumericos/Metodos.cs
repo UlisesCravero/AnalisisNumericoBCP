@@ -13,30 +13,29 @@ namespace MetodosNumericos
     {
         public static double Biseccion(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
-            Argument xi = new Argument("x = -10");
-            Argument xd = new Argument("x = 2");
-            Expression e = new Expression("2*x + a - f(10)", x, a, f);
-            double v = e.calculate();
-
-            double xi = xi_;
-            double xd = xd_;
-            Expression e = new Expression(funcion, x);
-            double calculo_inicial = e.calculate(xi) * e.calculate(xd);
+            string xi = xi_.ToString();
+            string xd = xd_.ToString();
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression e = new Expression("f(" + xi + ")", f);
+            Expression e2 = new Expression("f(" + xd + ")", f);
+            double calculo_inicial = e.calculate() * e2.calculate();
             if (calculo_inicial < 0)
             {
                 MessageBox.Show("Vuelva a ingresar los valores", "Parámetros inválidos");
                 return 0;
-            } else if (calculo_inicial == 0)
-                    {
-                        if (f.calculate(xi) == 0)
-                        {
-                            return xi;
-                        } else
-                        {
-                            return xd;
-                        }
-            } 
-            else 
+            }
+            else if (calculo_inicial == 0)
+            {
+                if (e.calculate() == 0)
+                {
+                    return Convert.ToDouble(xi);
+                }
+                else
+                {
+                    return Convert.ToDouble(xd);
+                }
+            }
+            else
             {
                 double x_ant = 0;
                 int cont = 0;
@@ -45,23 +44,24 @@ namespace MetodosNumericos
                 while (cont < iter_max)
                 {
                     cont += 1;
-                    xr = (xi + xd) / 2;
+                    xr = (Convert.ToDouble(xi) + Convert.ToDouble(xd)) / 2;
                     error = Math.Abs((xr - x_ant) / xr);
-                    if (Math.Abs(f.calculate(xr)) < tole || (error < tole))
+                    Expression e3 = new Expression("f(" + xr.ToString() + ")", f);
+                    if (Math.Abs(e3.calculate()) < tole || (error < tole))
                     {
                         return xr;
                     }
                     else
                     {
-                        double calculo_sec = f.calculate(xi) * f.calculate(xr);
+                        double calculo_sec = e.calculate() * e3.calculate();
                         if (calculo_sec < 0)
                         {
-                            xd = xr;
+                            xd = Convert.ToString(xr);
                             x_ant = xr;
                         }
                         else
                         {
-                            xi = xr;
+                            xi = Convert.ToString(xr);
                             x_ant = xr;
                         }
                     }
