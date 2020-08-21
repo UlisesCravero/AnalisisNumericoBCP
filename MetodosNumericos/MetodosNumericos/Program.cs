@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetodosNumericos;
 
 namespace WindowsFormsApp2
 {
@@ -17,6 +15,10 @@ namespace WindowsFormsApp2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            Console.WriteLine(Metodos.Biseccion("x^2", -3, 10, 0.0001, 100));
+
+
         }
+
     }
 }
