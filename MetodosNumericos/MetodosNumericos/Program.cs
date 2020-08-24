@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             
-            Console.WriteLine(Metodos.Biseccion("x", -2, 10, 0.001, 150));
+            Console.WriteLine(Metodos.Regla_falsa("ln(x)", 0.5, 10, 0.001, 150));
 
 
         }
