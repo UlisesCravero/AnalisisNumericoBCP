@@ -70,17 +70,18 @@ namespace MetodosNumericos
                 return 0;
             }
         }
- /*       public double regla_falsa(string f, double xi, double xd, double tole, int iter_max)
+        public double regla_falsa(string f, double xi, double xd, double tole, int iter_max)
         {
 
         }
-        public double newton_raphson(string f, double xi, double xd, double tole, int iter_max)
+        
+        public double newton_raphson(string funcion, double xi, double xd, double tole, int iter_max)
         {
 
         }
         public double secante(string f, double xi, double xd, double tole, int iter_max)
         {
 
-        }*/
+        }
     }
 }

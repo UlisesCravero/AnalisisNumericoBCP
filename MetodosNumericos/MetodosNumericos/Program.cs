@@ -15,7 +15,7 @@ namespace WindowsFormsApp2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            Console.WriteLine(Metodos.Biseccion("x^2", -3, 10, 0.0001, 100));
+            Console.WriteLine(Metodos.Biseccion("x^2", -2, 4, 0.0001, 150));
 
 
         }
