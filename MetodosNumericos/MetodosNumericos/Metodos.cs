@@ -139,9 +139,52 @@ namespace MetodosNumericos
             }
         }
         
-        public static double Newton_raphson(string funcion, double xi, double xd, double tole, int iter_max)
+        public static double Newton_raphson(string funcion, double xi_, double tole, int iter_max)
         {
-            
+            string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string dxi = (xi_+tole).ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression e = new Expression("f(" + xi + ")", f);
+            Expression e_aprox = new Expression("f(" + dxi + ")", f);
+
+            double calculo_inicial = e.calculate();
+
+            if (Math.Abs(calculo_inicial) < tole)
+            {
+                return xi_;
+            }
+            else
+            {
+                double x_ant = 0;
+                int cont = 0;
+                double xr;
+                double error;
+                while (cont < iter_max)
+                {
+                    cont += 1;
+
+                    xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                    dxi = (xi_+tole).ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                    e = new Expression("f(" + xi + ")", f);
+                    e_aprox = new Expression("f(" + dxi + ")", f);
+                    xr = xi_ - (e.calculate() / ((e_aprox.calculate()-e.calculate())/tole));
+
+                    error = Math.Abs((xr - x_ant) / xr);
+
+                    Expression e2 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
+                    if (Math.Abs(e2.calculate()) < tole || (error < tole) || cont >= iter_max)
+                    {
+                        return xr;
+                    }
+                    else
+                    {
+                        xi_ = xr;
+                    }
+                    x_ant = xr;
+                }
+                MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
+                return 0;
+            }
         }
         public static double secante(string f, double xi, double xd, double tole, int iter_max)
         {

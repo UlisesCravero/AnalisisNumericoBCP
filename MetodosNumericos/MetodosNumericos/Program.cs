@@ -12,11 +12,11 @@ namespace WindowsFormsApp2
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+           // Application.Run(new Form1());
             
-            Console.WriteLine(Metodos.Regla_falsa("ln(x)", 0.5, 10, 0.001, 150));
+            Console.WriteLine(Metodos.Newton_raphson("x", 15, 0.001, 150));
 
 
         }
