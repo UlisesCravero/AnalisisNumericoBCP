@@ -17,7 +17,7 @@ namespace WindowsFormsApp2
             //Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Form1());
 
-            Console.WriteLine(Metodos.Secante("ln(x)+(1/x)-3", 0.1, 1, 0.0001, 20));
+            Console.WriteLine(Metodos.Secante("ln(x)+(1)/(x)-3", 15, 20, 0.0001, 100));
         }
 
     }
