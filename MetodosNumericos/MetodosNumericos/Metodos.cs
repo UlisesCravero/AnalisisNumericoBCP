@@ -186,9 +186,78 @@ namespace MetodosNumericos
                 return 0;
             }
         }
-        public static double secante(string f, double xi, double xd, double tole, int iter_max)
+        public static double secante(string funcion, double xi_, double tole, int iter_max)
         {
-            return 0;
+            double xd_ = xi_+1;
+            string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string xd = xd_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression e = new Expression("f(" + xi + ")", f);
+            Expression e2 = new Expression("f(" + xd + ")", f);
+
+            double calculo_inicial = e.calculate();
+
+            if (Math.Abs(calculo_inicial) < tole)
+            {
+                return xi_;
+            }
+            else
+            {
+                double x_ant = 0;
+                int cont = 0;
+                double xr;
+                double error;
+
+                double denom = (e2.calculate() - e.calculate());
+                Console.WriteLine(denom);
+                if (denom < 0)
+                {
+                    MessageBox.Show("Metodo no concluyente", "Division por cero");
+                    return 0;
+                }
+                else
+                {
+                    while (cont < iter_max)
+                    {
+
+                        cont += 1;
+
+                        xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                        xd = xd_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                        e = new Expression("f(" + xi + ")", f);
+                        e2 = new Expression("f(" + xd + ")", f);
+
+                        denom = (e2.calculate() - e.calculate());
+                        Console.WriteLine(denom);
+                        if (denom < 0)
+                        {
+                            MessageBox.Show("Metodo no concluyente", "Division por cero");
+                            return 0;
+                        }
+                        else 
+                        {
+                            xr = ((e2.calculate() * xi_) - (e.calculate() * e2.calculate()) / (e2.calculate() - e.calculate()));
+                           // Console.WriteLine(xr);
+                            error = Math.Abs((xr - x_ant) / xr);
+
+                            Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
+                            if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
+                            {
+                                return xr;
+                            }
+                            else
+                            {
+                                xi_ = xr;
+                            }
+                            x_ant = xr;
+                        }
+                        
+                    }
+                }
+                
+                MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
+                return 0;
+            }
         }
     }
 }

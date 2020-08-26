@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
             //Application.SetCompatibleTextRenderingDefault(false);
            // Application.Run(new Form1());
             
-            Console.WriteLine(Metodos.Newton_raphson("x", 15, 0.001, 150));
+            Console.WriteLine(Metodos.secante("(20)/(x) * ln(x-4)", 15, 0.0001, 150));
 
 
         }
