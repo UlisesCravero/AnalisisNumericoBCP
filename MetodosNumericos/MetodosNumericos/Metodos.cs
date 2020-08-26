@@ -182,7 +182,7 @@ namespace MetodosNumericos
                         error = Math.Abs((xr - x_ant) / xr);
 
                         Expression e2 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
-                        if (Math.Abs(e2.calculate()) < tole || (error < tole) || cont >= iter_max)
+                        if (Math.Abs(e2.calculate()) < tole || (error < tole))
                         {
                             return xr;
                         }
@@ -197,6 +197,7 @@ namespace MetodosNumericos
                 return 0;
             }
         }
+
         public static double Secante(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
@@ -220,6 +221,10 @@ namespace MetodosNumericos
 
                 while (cont < iter_max)
                 {
+                    xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                    xd = xd_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                    e = new Expression("f(" + xi + ")", f);
+                    e2 = new Expression("f(" + xd + ")", f);
                     double denom = (e2.calculate() - e.calculate());
 
                     if (Math.Abs(denom) < tole) 
@@ -238,23 +243,25 @@ namespace MetodosNumericos
                         Console.WriteLine("xi " + xi);
                         Console.WriteLine("xd " + xd);
                         denom = (e2.calculate() - e.calculate());
-
-                        xr = ((e2.calculate() * xi_) - (e.calculate() * e2.calculate()) / (e2.calculate() - e.calculate()));
+                        Console.WriteLine("denom " + denom);
+                        Console.WriteLine("e " + e.calculate());
+                        Console.WriteLine("e2 " + e2.calculate());
+                        xr = ((e2.calculate() * xi_) - (e.calculate() * xd_)) / denom;
                         Console.WriteLine("xr " + xr);
                         Console.WriteLine(" ");
                         error = Math.Abs((xr - x_ant) / xr);
                     
                         Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
-                        if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
+                        if (Math.Abs(e3.calculate()) < tole || (error < tole))
                         {
                             return xr;
                         }
                         else
                         {
-                            xd_ = xi_;
-                            xi_ = xr;
+                            xi_ = xd_;
+                            xd_ = xr;
+                            x_ant = xr;
                         }
-                        x_ant = xr;
                     }
                 }
                 MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
