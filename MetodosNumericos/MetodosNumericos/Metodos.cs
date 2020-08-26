@@ -197,7 +197,7 @@ namespace MetodosNumericos
                 return 0;
             }
         }
-        public static double secante(string funcion, double xi_, double xd_, double tole, int iter_max)
+        public static double Secante(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
             string xd = xd_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
@@ -218,51 +218,45 @@ namespace MetodosNumericos
                 double xr;
                 double error;
 
-                if (Math.Abs(denom) < tole)
+                while (cont < iter_max)
                 {
-                    MessageBox.Show("Metodo no concluyente", "Division por cero");
-                    return 0;
-                }
-                else
-                {
-                    while (cont < iter_max)
+                    double denom = (e2.calculate() - e.calculate());
+
+                    if (Math.Abs(denom) < tole) 
                     {
-
+                        MessageBox.Show("El metodo no es concluyente", "Divergencia por punto min/max o de inflexion");
+                        return 0;
+                    }
+                    else
+                    {
                         cont += 1;
-
+                        Console.WriteLine("cont " + cont);
                         xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
                         xd = xd_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
                         e = new Expression("f(" + xi + ")", f);
                         e2 = new Expression("f(" + xd + ")", f);
-
+                        Console.WriteLine("xi " + xi);
+                        Console.WriteLine("xd " + xd);
                         denom = (e2.calculate() - e.calculate());
-                        Console.WriteLine(denom);
-                        if (denom < 0)
-                        {
-                            MessageBox.Show("Metodo no concluyente", "Division por cero");
-                            return 0;
-                        }
-                        else 
-                        {
-                            xr = ((e2.calculate() * xi_) - (e.calculate() * e2.calculate()) / (e2.calculate() - e.calculate()));
-                           // Console.WriteLine(xr);
-                            error = Math.Abs((xr - x_ant) / xr);
 
-                            Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
-                            if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
-                            {
-                                return xr;
-                            }
-                            else
-                            {
-                                xi_ = xr;
-                            }
-                            x_ant = xr;
+                        xr = ((e2.calculate() * xi_) - (e.calculate() * e2.calculate()) / (e2.calculate() - e.calculate()));
+                        Console.WriteLine("xr " + xr);
+                        Console.WriteLine(" ");
+                        error = Math.Abs((xr - x_ant) / xr);
+                    
+                        Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
+                        if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
+                        {
+                            return xr;
                         }
-                        
+                        else
+                        {
+                            xd_ = xi_;
+                            xi_ = xr;
+                        }
+                        x_ant = xr;
                     }
                 }
-                
                 MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
                 return 0;
             }

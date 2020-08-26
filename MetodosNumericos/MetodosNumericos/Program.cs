@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MetodosNumericos;
+using org.mariuszgromada.math.mxparser;
 
 namespace WindowsFormsApp2
 {
@@ -15,8 +16,8 @@ namespace WindowsFormsApp2
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
            // Application.Run(new Form1());
-            
-            Console.WriteLine(Metodos.secante("(20)/(x) * ln(x-4)", 15, 0.0001, 150));
+
+            Console.WriteLine(Metodos.Secante("x^2", -10, 20, 0.0001, 150));
 
 
         }
