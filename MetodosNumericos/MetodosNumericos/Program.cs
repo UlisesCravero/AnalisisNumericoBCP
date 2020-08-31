@@ -15,9 +15,12 @@ namespace WindowsFormsApp2
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new Form1());
+            //Application.Run(new Form1());
 
             Console.WriteLine(Metodos.Secante("ln(x)+(1)/(x)-3", 15, 20, 0.0001, 100));
+
+            
+
         }
 
     }

@@ -267,15 +267,9 @@ namespace MetodosNumericos
                         }
                         else
                         {
-                            if (e3.calculate() < 0)
-                            {
-                                xd_ = xr;
-                            }
-                            else
-                            {
-                                xi_ = xr;
-                            }
-                        x_ant = xr;
+                            xd_ = xi_;
+                            xi_ = xr;
+                            x_ant = xr;
                         }
                     }
                 }
