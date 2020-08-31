@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using MetodosNumericos;
 using org.mariuszgromada.math.mxparser;
+using static MetodosNumericos.Metodos;
 
 namespace WindowsFormsApp2
 {
@@ -17,7 +18,9 @@ namespace WindowsFormsApp2
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            //Console.WriteLine(Metodos.Secante("ln(x)+(1)/(x)-3", 0.1, 1, 0.0001, 100));
+            //Resultado nuevo = new Resultado();
+            //nuevo = Metodos.Biseccion("(abs(x^2-4))+2*x", -4, -2, 0.0001, 100);
+            //Console.WriteLine(nuevo.raiz + " " + nuevo.nro_iteraciones + " " + nuevo.error);
 
             
 

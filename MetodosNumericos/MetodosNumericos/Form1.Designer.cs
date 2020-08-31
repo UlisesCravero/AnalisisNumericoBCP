@@ -130,10 +130,9 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(346, 129);
+            this.groupBox2.Size = new System.Drawing.Size(470, 129);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-
             // 
             // BoxMetodos
             // 

@@ -110,6 +110,7 @@ namespace WindowsFormsApp2
             {
                 case 0:
                     resultado = Biseccion(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                    Console.WriteLine(textbox_funcion.Text + " " + double.Parse(textbox_LI.Text) + " " + double.Parse(textbox_LD.Text) + " " + double.Parse(textbox_Tolerancia.Text) + " " + int.Parse(textbox_IterMax.Text));
                     break;
                 case 1:
                     resultado = Regla_falsa(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
@@ -117,8 +118,11 @@ namespace WindowsFormsApp2
                 case 2:
                     resultado = Newton_raphson(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
-                default:
+                case 3:
                     resultado = Secante(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                    break;
+                default:
+                    MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");
                     break;
             }
 
