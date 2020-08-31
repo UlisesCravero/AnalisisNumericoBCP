@@ -18,13 +18,14 @@ namespace MetodosNumericos
             public Resultado(int nro_iteraciones_, double tolerancia, double raiz_)
             {
                 nro_iteraciones = nro_iteraciones_;
-                error = tolerancia*100;
+                error = tolerancia * 100;
                 raiz = raiz_;
             }
-            int nro_iteraciones;
-            double error;
-            double raiz;
+            public int nro_iteraciones;
+            public double error;
+            public double raiz;
         }
+
         public static Resultado Biseccion(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));

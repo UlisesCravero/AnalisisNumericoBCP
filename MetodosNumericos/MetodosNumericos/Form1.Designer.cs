@@ -33,13 +33,13 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabControl_SelecMetodo = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.buttonObtener = new System.Windows.Forms.Button();
+            this.label_ResultadoSolucion = new System.Windows.Forms.Label();
+            this.label_ResultadoErrorR = new System.Windows.Forms.Label();
+            this.label_ResultadoIteraciones = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -74,14 +74,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textbox_LD = new System.Windows.Forms.TextBox();
+            this.textbox_LI = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textbox_IterMax = new System.Windows.Forms.TextBox();
+            this.textbox_Tolerancia = new System.Windows.Forms.TextBox();
+            this.textbox_funcion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -90,7 +90,7 @@
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.tabControl3.SuspendLayout();
+            this.tabControl_SelecMetodo.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -109,7 +109,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1069, 556);
@@ -119,9 +119,9 @@
             // 
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1061, 527);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Unidad 1";
@@ -131,7 +131,7 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Location = new System.Drawing.Point(25, 7);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(1005, 517);
@@ -139,39 +139,38 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.tabControl3);
+            this.tabPage5.Controls.Add(this.tabControl_SelecMetodo);
             this.tabPage5.Controls.Add(this.label4);
             this.tabPage5.Controls.Add(this.groupBox1);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage5.Size = new System.Drawing.Size(997, 488);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "Actividad";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // tabControl3
+            // tabControl_SelecMetodo
             // 
-            this.tabControl3.Controls.Add(this.tabPage6);
-            this.tabControl3.Controls.Add(this.tabPage7);
-            this.tabControl3.Controls.Add(this.tabPage8);
-            this.tabControl3.Controls.Add(this.tabPage9);
-            this.tabControl3.Location = new System.Drawing.Point(8, 251);
-            this.tabControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabControl3.Name = "tabControl3";
-            this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(987, 226);
-            this.tabControl3.TabIndex = 2;
-            this.tabControl3.SelectedIndexChanged += new System.EventHandler(this.tabControl3_SelectedIndexChanged);
+            this.tabControl_SelecMetodo.Controls.Add(this.tabPage6);
+            this.tabControl_SelecMetodo.Controls.Add(this.tabPage7);
+            this.tabControl_SelecMetodo.Controls.Add(this.tabPage8);
+            this.tabControl_SelecMetodo.Controls.Add(this.tabPage9);
+            this.tabControl_SelecMetodo.Location = new System.Drawing.Point(8, 251);
+            this.tabControl_SelecMetodo.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl_SelecMetodo.Name = "tabControl_SelecMetodo";
+            this.tabControl_SelecMetodo.SelectedIndex = 0;
+            this.tabControl_SelecMetodo.Size = new System.Drawing.Size(987, 226);
+            this.tabControl_SelecMetodo.TabIndex = 2;
             // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.groupBox2);
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage6.Size = new System.Drawing.Size(979, 197);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Bisección";
@@ -179,66 +178,67 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.buttonObtener);
+            this.groupBox2.Controls.Add(this.label_ResultadoSolucion);
+            this.groupBox2.Controls.Add(this.label_ResultadoErrorR);
+            this.groupBox2.Controls.Add(this.label_ResultadoIteraciones);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupBox2.Location = new System.Drawing.Point(8, 7);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(960, 183);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de salida";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // button1
+            // buttonObtener
             // 
-            this.button1.Location = new System.Drawing.Point(604, 65);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Obtener";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonObtener.Location = new System.Drawing.Point(604, 65);
+            this.buttonObtener.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonObtener.Name = "buttonObtener";
+            this.buttonObtener.Size = new System.Drawing.Size(100, 28);
+            this.buttonObtener.TabIndex = 3;
+            this.buttonObtener.Text = "Obtener";
+            this.buttonObtener.UseVisualStyleBackColor = true;
+            this.buttonObtener.Click += new System.EventHandler(this.buttonObtener_Click);
             // 
-            // label12
+            // label_ResultadoSolucion
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(176, 103);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(18, 17);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "--";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+            this.label_ResultadoSolucion.AutoSize = true;
+            this.label_ResultadoSolucion.Location = new System.Drawing.Point(176, 103);
+            this.label_ResultadoSolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_ResultadoSolucion.Name = "label_ResultadoSolucion";
+            this.label_ResultadoSolucion.Size = new System.Drawing.Size(18, 17);
+            this.label_ResultadoSolucion.TabIndex = 11;
+            this.label_ResultadoSolucion.Text = "--";
+            this.label_ResultadoSolucion.Click += new System.EventHandler(this.label12_Click);
             // 
-            // label13
+            // label_ResultadoErrorR
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(175, 71);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(18, 17);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "--";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label_ResultadoErrorR.AutoSize = true;
+            this.label_ResultadoErrorR.Location = new System.Drawing.Point(175, 71);
+            this.label_ResultadoErrorR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_ResultadoErrorR.Name = "label_ResultadoErrorR";
+            this.label_ResultadoErrorR.Size = new System.Drawing.Size(18, 17);
+            this.label_ResultadoErrorR.TabIndex = 13;
+            this.label_ResultadoErrorR.Text = "--";
+            this.label_ResultadoErrorR.Click += new System.EventHandler(this.label13_Click);
             // 
-            // label14
+            // label_ResultadoIteraciones
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(175, 39);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(18, 17);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "--";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
+            this.label_ResultadoIteraciones.AutoSize = true;
+            this.label_ResultadoIteraciones.Location = new System.Drawing.Point(175, 39);
+            this.label_ResultadoIteraciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_ResultadoIteraciones.Name = "label_ResultadoIteraciones";
+            this.label_ResultadoIteraciones.Size = new System.Drawing.Size(18, 17);
+            this.label_ResultadoIteraciones.TabIndex = 12;
+            this.label_ResultadoIteraciones.Text = "--";
+            this.label_ResultadoIteraciones.Click += new System.EventHandler(this.label14_Click);
             // 
             // label9
             // 
@@ -276,9 +276,9 @@
             // 
             this.tabPage7.Controls.Add(this.groupBox3);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage7.Size = new System.Drawing.Size(979, 197);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Regla Falsa";
@@ -296,9 +296,9 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupBox3.Location = new System.Drawing.Point(8, 6);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(960, 183);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -307,7 +307,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(604, 65);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 3;
@@ -379,9 +379,9 @@
             // 
             this.tabPage8.Controls.Add(this.groupBox4);
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage8.Size = new System.Drawing.Size(979, 197);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Newton - Raphson";
@@ -398,9 +398,9 @@
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupBox4.Location = new System.Drawing.Point(8, 6);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(960, 183);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
@@ -409,7 +409,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(604, 65);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 28);
             this.button3.TabIndex = 3;
@@ -481,9 +481,9 @@
             // 
             this.tabPage9.Controls.Add(this.groupBox5);
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
-            this.tabPage9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage9.Size = new System.Drawing.Size(979, 197);
             this.tabPage9.TabIndex = 3;
             this.tabPage9.Text = "Secante";
@@ -500,9 +500,9 @@
             this.groupBox5.Controls.Add(this.label30);
             this.groupBox5.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupBox5.Location = new System.Drawing.Point(8, 6);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(960, 183);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
@@ -511,7 +511,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(604, 65);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 3;
@@ -593,19 +593,19 @@
             // 
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.textbox_LD);
+            this.groupBox1.Controls.Add(this.textbox_LI);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textbox_IterMax);
+            this.groupBox1.Controls.Add(this.textbox_Tolerancia);
+            this.groupBox1.Controls.Add(this.textbox_funcion);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupBox1.Location = new System.Drawing.Point(8, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(979, 176);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -632,21 +632,21 @@
             this.label6.Text = "L.I.";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // textBox5
+            // textbox_LD
             // 
-            this.textBox5.Location = new System.Drawing.Point(584, 71);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(132, 22);
-            this.textBox5.TabIndex = 7;
+            this.textbox_LD.Location = new System.Drawing.Point(584, 71);
+            this.textbox_LD.Margin = new System.Windows.Forms.Padding(4);
+            this.textbox_LD.Name = "textbox_LD";
+            this.textbox_LD.Size = new System.Drawing.Size(132, 22);
+            this.textbox_LD.TabIndex = 7;
             // 
-            // textBox6
+            // textbox_LI
             // 
-            this.textBox6.Location = new System.Drawing.Point(584, 39);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(132, 22);
-            this.textBox6.TabIndex = 5;
+            this.textbox_LI.Location = new System.Drawing.Point(584, 39);
+            this.textbox_LI.Margin = new System.Windows.Forms.Padding(4);
+            this.textbox_LI.Name = "textbox_LI";
+            this.textbox_LI.Size = new System.Drawing.Size(132, 22);
+            this.textbox_LI.TabIndex = 5;
             // 
             // label3
             // 
@@ -681,37 +681,37 @@
             this.label1.Text = "f(x) =";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox3
+            // textbox_IterMax
             // 
-            this.textBox3.Location = new System.Drawing.Point(176, 100);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 22);
-            this.textBox3.TabIndex = 2;
+            this.textbox_IterMax.Location = new System.Drawing.Point(176, 100);
+            this.textbox_IterMax.Margin = new System.Windows.Forms.Padding(4);
+            this.textbox_IterMax.Name = "textbox_IterMax";
+            this.textbox_IterMax.Size = new System.Drawing.Size(132, 22);
+            this.textbox_IterMax.TabIndex = 2;
             // 
-            // textBox2
+            // textbox_Tolerancia
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 68);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 22);
-            this.textBox2.TabIndex = 1;
+            this.textbox_Tolerancia.Location = new System.Drawing.Point(176, 68);
+            this.textbox_Tolerancia.Margin = new System.Windows.Forms.Padding(4);
+            this.textbox_Tolerancia.Name = "textbox_Tolerancia";
+            this.textbox_Tolerancia.Size = new System.Drawing.Size(132, 22);
+            this.textbox_Tolerancia.TabIndex = 1;
             // 
-            // textBox1
+            // textbox_funcion
             // 
-            this.textBox1.Location = new System.Drawing.Point(176, 36);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textbox_funcion.Location = new System.Drawing.Point(176, 36);
+            this.textbox_funcion.Margin = new System.Windows.Forms.Padding(4);
+            this.textbox_funcion.Name = "textbox_funcion";
+            this.textbox_funcion.Size = new System.Drawing.Size(132, 22);
+            this.textbox_funcion.TabIndex = 0;
+            this.textbox_funcion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1061, 527);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Unidad 2";
@@ -720,9 +720,9 @@
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(1061, 527);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Unidad 3";
@@ -731,9 +731,9 @@
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(1061, 527);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Unidad 4";
@@ -750,15 +750,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tabControl3.ResumeLayout(false);
+            this.tabControl_SelecMetodo.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -784,21 +785,21 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textbox_funcion;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textbox_IterMax;
+        private System.Windows.Forms.TextBox textbox_Tolerancia;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textbox_LD;
+        private System.Windows.Forms.TextBox textbox_LI;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabControl tabControl_SelecMetodo;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
@@ -808,10 +809,10 @@
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_ResultadoSolucion;
+        private System.Windows.Forms.Label label_ResultadoErrorR;
+        private System.Windows.Forms.Label label_ResultadoIteraciones;
+        private System.Windows.Forms.Button buttonObtener;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label7;
