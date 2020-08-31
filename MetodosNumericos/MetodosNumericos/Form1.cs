@@ -95,35 +95,36 @@ namespace WindowsFormsApp2
 
         }
 
-        private void buttonObtener_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Form1 formPrincipal = new Form1();
+            formPrincipal.Owner = this;
+        }
+
+        private void ObtenerClick(object sender, EventArgs e)
         {
             Resultado resultado = new Resultado();
-            switch (tabControl_SelecMetodo.SelectedIndex)
+            int metodo = BoxMetodos.SelectedIndex;
+
+            switch (metodo)
             {
-                case 0:                   
-                    resultado = Biseccion(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), int.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                case 0:
+                    resultado = Biseccion(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
                 case 1:
-                    resultado = Regla_falsa(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), int.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                    resultado = Regla_falsa(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
                 case 2:
-                    resultado = Newton_raphson(textbox_funcion.Text, double.Parse(textbox_LI.Text), int.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                    resultado = Newton_raphson(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
                 default:
-                    resultado = Secante(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), int.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
+                    resultado = Secante(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
             }
 
             label_ResultadoIteraciones.Text = resultado.nro_iteraciones.ToString();
             label_ResultadoErrorR.Text = resultado.error.ToString();
             label_ResultadoSolucion.Text = resultado.raiz.ToString();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Form1 formPrincipal = new Form1();
-            formPrincipal.Owner = this;
-
         }
     }
 }

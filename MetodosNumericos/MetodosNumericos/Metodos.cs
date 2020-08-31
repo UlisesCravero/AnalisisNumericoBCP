@@ -15,10 +15,10 @@ namespace MetodosNumericos
     {
         public struct Resultado
         {
-            public Resultado(int nro_iteraciones_, double tolerancia, double raiz_)
+            public Resultado(int nro_iteraciones_, double error_, double raiz_)
             {
                 nro_iteraciones = nro_iteraciones_;
-                error = tolerancia * 100;
+                error = error_;
                 raiz = raiz_;
             }
             public int nro_iteraciones;
@@ -38,16 +38,16 @@ namespace MetodosNumericos
             if (calculo_inicial == 0)
             {
                 if (e.calculate() == 0)
-                    return new Resultado(0, tole, xi_);
+                    return new Resultado(0, 0, xi_);
                 else
-                    return new Resultado(0, tole, xd_);
+                    return new Resultado(0, 0, xd_);
             }
             else
             {
                 if (calculo_inicial > 0)
                 {
                     MessageBox.Show("Vuelva a ingresar los valores", "Parámetros inválidos");
-                    return new Resultado(0, tole, 0); ;
+                    return new Resultado(0, 0, 0); ;
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace MetodosNumericos
                         Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
                         if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
                         {
-                            return new Resultado(cont, tole, xr);
+                            return new Resultado(cont, error, xr);
                         }
                         else
                         {
@@ -83,7 +83,7 @@ namespace MetodosNumericos
                         }
                     }
                     MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
-                    return new Resultado(cont, tole, 0);
+                    return new Resultado(cont, 0, 0);
                 }
             }      
         }
@@ -100,16 +100,16 @@ namespace MetodosNumericos
             if (calculo_inicial == 0)
             {
                 if (e.calculate() == 0)
-                    return new Resultado(0, tole, xi_);
+                    return new Resultado(0, 0, xi_);
                 else
-                    return new Resultado(0, tole, xd_);
+                    return new Resultado(0, 0, xd_);
             }
             else
             {
                 if (calculo_inicial > 0)
                 {
                     MessageBox.Show("Vuelva a ingresar los valores", "Parámetros inválidos");
-                    return new Resultado(0, tole, 0);
+                    return new Resultado(0, 0, 0);
                 }
                 else
                 {
@@ -135,7 +135,7 @@ namespace MetodosNumericos
                         Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
                         if (Math.Abs(e3.calculate()) < tole || (error < tole) || cont >= iter_max)
                         {
-                            return new Resultado(cont, tole, xr);
+                            return new Resultado(cont, error, xr);
                         }
                         else
                         {
@@ -152,7 +152,7 @@ namespace MetodosNumericos
                         }
                     }
                     MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
-                    return new Resultado(cont, tole, 0);
+                    return new Resultado(cont, 0, 0);
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace MetodosNumericos
             double calculo_inicial = e.calculate();
             if (Math.Abs(calculo_inicial) < tole)
             {
-                return new Resultado(0, tole, xi_);
+                return new Resultado(0, 0, xi_);
             }
             else
             {
@@ -182,7 +182,7 @@ namespace MetodosNumericos
                     if(Math.Abs(e_aprox.calculate()) < tole)
                     {
                         MessageBox.Show("El metodo no es concluyente", "Divergencia por punto min/max o de inflexion");
-                        return new Resultado(0, tole, 0);
+                        return new Resultado(0, 0, 0);
                     }
                     else
                     {
@@ -199,7 +199,7 @@ namespace MetodosNumericos
                         Expression e2 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
                         if (Math.Abs(e2.calculate()) < tole || (error < tole))
                         {
-                            return new Resultado(cont, tole, xr);
+                            return new Resultado(cont, error, xr);
                         }
                         else
                         {
@@ -209,7 +209,7 @@ namespace MetodosNumericos
                     }
                 }
                 MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
-                return new Resultado(cont, tole, 0);
+                return new Resultado(cont, 0, 0);
             }
         }
 
@@ -225,7 +225,7 @@ namespace MetodosNumericos
 
             if (Math.Abs(calculo_inicial) < tole)
             {
-                return new Resultado(0, tole, xi_);
+                return new Resultado(0, 0, xi_);
             }
             else
             {
@@ -245,7 +245,7 @@ namespace MetodosNumericos
                     if (Math.Abs(denom) < tole) 
                     {
                         MessageBox.Show("El metodo no es concluyente", "Divergencia por punto min/max o de inflexion");
-                        return new Resultado(0, tole, 0);
+                        return new Resultado(0, 0, 0);
                     }
                     else
                     {
@@ -264,7 +264,7 @@ namespace MetodosNumericos
                         Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
                         if (Math.Abs(e3.calculate()) < tole || (error < tole))
                         {
-                            return new Resultado(cont, tole, xr);
+                            return new Resultado(cont, error, xr);
                         }
                         else
                         {
@@ -275,7 +275,7 @@ namespace MetodosNumericos
                     }
                 }
                 MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
-                return new Resultado(cont, tole, 0);
+                return new Resultado(cont, 0, 0);
             }
         }
     }
