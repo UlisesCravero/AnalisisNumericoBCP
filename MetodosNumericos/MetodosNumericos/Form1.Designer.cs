@@ -55,6 +55,11 @@
             this.textbox_Tolerancia = new System.Windows.Forms.TextBox();
             this.textbox_funcion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.matriz = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.boton_generar = new System.Windows.Forms.Button();
+            this.tam_matriz = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -64,6 +69,8 @@
             this.tabPage5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -347,14 +354,65 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.matriz);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1061, 527);
             this.tabPage2.TabIndex = 1;
+            this.tabPage2.Tag = "";
             this.tabPage2.Text = "Unidad 2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // matriz
+            // 
+            this.matriz.Location = new System.Drawing.Point(234, 17);
+            this.matriz.Name = "matriz";
+            this.matriz.Size = new System.Drawing.Size(492, 452);
+            this.matriz.TabIndex = 3;
+            this.matriz.Tag = "Matriz";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.boton_generar);
+            this.groupBox3.Controls.Add(this.tam_matriz);
+            this.groupBox3.Location = new System.Drawing.Point(7, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(206, 140);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Nueva matriz";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 17);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Ingrese tamaño (nxn):";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // boton_generar
+            // 
+            this.boton_generar.Location = new System.Drawing.Point(42, 93);
+            this.boton_generar.Name = "boton_generar";
+            this.boton_generar.Size = new System.Drawing.Size(122, 41);
+            this.boton_generar.TabIndex = 1;
+            this.boton_generar.Text = "Generar matriz";
+            this.boton_generar.UseVisualStyleBackColor = true;
+            this.boton_generar.Click += new System.EventHandler(this.boton_generar_Click);
+            // 
+            // tam_matriz
+            // 
+            this.tam_matriz.Location = new System.Drawing.Point(21, 54);
+            this.tam_matriz.Name = "tam_matriz";
+            this.tam_matriz.Size = new System.Drawing.Size(169, 22);
+            this.tam_matriz.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -402,6 +460,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -437,6 +498,11 @@
         private System.Windows.Forms.Label label_ResultadoIteraciones;
         private System.Windows.Forms.Button buttonObtener;
         private System.Windows.Forms.ComboBox BoxMetodos;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button boton_generar;
+        private System.Windows.Forms.TextBox tam_matriz;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel matriz;
     }
 }
 

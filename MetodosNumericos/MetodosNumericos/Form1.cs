@@ -130,5 +130,53 @@ namespace WindowsFormsApp2
             label_ResultadoErrorR.Text = resultado.error.ToString();
             label_ResultadoSolucion.Text = resultado.raiz.ToString();
         }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void boton_generar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int tamaño = int.Parse(tam_matriz.Text);
+                int pointX = 30;
+                int pointY = 30;
+                matriz.Controls.Clear();
+                for (int j = 0; j < tamaño; j++)
+                {
+                    for (int i = 0; i < tamaño; i++)
+                    {
+                        TextBox txt = new TextBox();
+                        txt.Location = new Point(pointX, pointY);
+                        txt.Name = $"txt{i}{j}";
+                        txt.AutoSize = false;
+                        txt.Size = new Size(30, 30);
+                        txt.Font = new Font("Microsoft Sans Serif", 12);
+                        matriz.Controls.Add(txt);
+                        pointY += 50;
+                    }
+                    pointX += 50;
+                    pointY = 30;
+                }
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese un valor válido","Error");
+            }
+
+        }
+
     }
 }
