@@ -278,5 +278,86 @@ namespace MetodosNumericos
                 return new Resultado(cont, 0, 0);
             }
         }
+
+        // unidad 2
+
+        public static double[] MetodoGaussJordan(int dim, double[,] matriz)
+        {
+            for (int i = 0; i <= dim - 1; i++)
+            {
+                double coeficiente = matriz[i, i];
+                for (int j = 0; j <= dim; j++)
+                {
+                    matriz[i, j] = matriz[i, j] / coeficiente;
+                }
+                for (int j = 0; j <= dim - 1; j++)
+                {
+                    if (i != j)
+                    {
+                        coeficiente = matriz[j, i];
+                        for (int k = 0; k <= dim; k++)
+                        {
+                            matriz[j, k] = matriz[j, k] - (coeficiente * matriz[i, k]);
+                        }
+                    }
+                }
+            }
+
+            double[] resultado = new double[dim];
+            for (int i = 0; i < dim; i++)
+            {
+                resultado[i] = matriz[i, dim];
+            }
+
+            return resultado;
+        }
+
+        public static double[] MetodoGaussSeidel(int dim, double[,] M, int iteraciones, double tolerancia)
+        {
+            bool bandera = true;
+            double[] VectorResultados = new double[dim];
+            double[] VectorAnterior = new double[dim];
+            int contador = 0;
+            double resultado;
+
+            while (iteraciones >= contador || bandera == false)
+            {
+                contador++;
+                if (contador > 1)
+                {
+                    VectorResultados.CopyTo(VectorAnterior, 0);
+                }
+
+                for (int i = 0; i < dim; i++)
+                {
+                    double x;
+                    resultado = M[i, dim];
+                    x = M[i, i];
+
+                    for (int j = 0; j < dim; j++)
+                    {
+                        if (i != j)
+                        {                            
+                            resultado = resultado - (M[i, j]) * (VectorResultados[j]);
+                        }
+                    }
+                    x = Convert.ToDouble(resultado) / x;
+                    VectorResultados[i] = x;
+                }
+
+                for (int i = 0; i < dim; i++)
+                {                   
+                    if(Math.Abs(VectorResultados[i] - VectorAnterior[i]) < tolerancia)
+                    {
+                        bandera = false;
+                    }
+                }
+            }
+            if (iteraciones >= contador)
+            {
+                return null;
+            }
+            return VectorResultados;
+        }
     }
 }

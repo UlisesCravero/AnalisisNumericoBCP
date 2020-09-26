@@ -154,9 +154,9 @@ namespace WindowsFormsApp2
                 int pointX = 30;
                 int pointY = 30;
                 matriz.Controls.Clear();
-                for (int j = 0; j < tamaño; j++)
+                for (int i = 0; i < tamaño; i++)
                 {
-                    for (int i = 0; i < tamaño; i++)
+                    for (int j = 0; j < tamaño + 1; j++)
                     {
                         TextBox txt = new TextBox();
                         txt.Location = new Point(pointX, pointY);
@@ -165,10 +165,16 @@ namespace WindowsFormsApp2
                         txt.Size = new Size(30, 30);
                         txt.Font = new Font("Microsoft Sans Serif", 12);
                         matriz.Controls.Add(txt);
-                        pointY += 50;
+                        pointX += 50;
+                        if (j == tamaño)
+                        {
+                            txt.Name = $"txt{i}{j}";
+                            txt.BackColor = Color.Yellow;
+                            int coef = j;
+                        }
                     }
-                    pointX += 50;
-                    pointY = 30;
+                    pointY += 50;
+                    pointX = 30;
                 }
             } 
             catch (Exception)
