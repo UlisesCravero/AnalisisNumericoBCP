@@ -184,5 +184,36 @@ namespace WindowsFormsApp2
 
         }
 
+        private void button_GaussJordan_Click(object sender, EventArgs e)
+        {
+            int tamaño = int.Parse(tam_matriz.Text);
+            double[,] matriz_aux = new double[tamaño, tamaño + 1];
+            for (int i = 0; i < tamaño; i++)
+            {
+                for (int j = 0; j < tamaño + 1; j++)
+                {
+
+                    Control tbx = matriz.Controls.Find("(" + i.ToString() + "," + j.ToString() + ")", true).First();
+                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
+                }
+            }
+            MetodoGaussJordan(tamaño, matriz_aux);
+        }
+
+        private void button_GaussSeidel_Click(object sender, EventArgs e)
+        {
+            int tamaño = int.Parse(tam_matriz.Text);
+            double[,] matriz_aux = new double[tamaño, tamaño + 1];
+            for (int i = 0; i < tamaño; i++)
+            {
+                for (int j = 0; j < tamaño + 1; j++)
+                {
+
+                    Control tbx = matriz.Controls.Find("(" + i.ToString() + "," + j.ToString() + ")", true).First();
+                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
+                }
+            }
+            MetodoGaussSeidel(tamaño, matriz_aux, 100, 0.0001);
+        }
     }
 }
