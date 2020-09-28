@@ -212,18 +212,18 @@ namespace WindowsFormsApp2
 
         private void button_GaussJordan_Click(object sender, EventArgs e)
         {
-            double[] resultado = MetodoGaussJordan(int.Parse(tam_matriz.Text), obtenerMatriz());
-            MessageBox.Show(obtenerResultadosMetodos(resultado), "Resultados Método Gauss-Jordan");
+            ResultadoGauss resp = MetodoGaussJordan(int.Parse(tam_matriz.Text), obtenerMatriz());
+            MessageBox.Show(obtenerResultadosMetodos(resp.resultados), "Resultados Método Gauss-Jordan");
         }
 
         private void button_GaussSeidel_Click(object sender, EventArgs e)
         {
-            double[] resultado = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, 0.0001);
-            if(resultado == null)
+            ResultadoGauss resp = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, 0.0001);
+            if (resp.resultados == null)
             {
                 MessageBox.Show("Número de iteraciones máximas superadas, el método no es convergente", "Resultados Método Gauss-Seidel");
             }
-            else MessageBox.Show(obtenerResultadosMetodos(resultado), "Resultados Método Gauss-Seidel");
+            else MessageBox.Show(obtenerResultadosMetodos(resp.resultados) + $"en {resp.nro_iteraciones} iteraciones.", "Resultados Método Gauss-Seidel");
         }
 
     }

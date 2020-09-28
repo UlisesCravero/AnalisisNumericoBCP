@@ -26,6 +26,17 @@ namespace MetodosNumericos
             public double raiz;
         }
 
+        public struct ResultadoGauss
+        {
+            public ResultadoGauss(int nro_iteraciones_, double[] resultados_)
+            {
+                nro_iteraciones = nro_iteraciones_;
+                resultados = resultados_;
+            }
+            public int nro_iteraciones;
+            public double[] resultados;
+        }
+
         public static Resultado Biseccion(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
@@ -281,8 +292,9 @@ namespace MetodosNumericos
 
         // unidad 2
 
-        public static double[] MetodoGaussJordan(int dim, double[,] matriz)
+        public static ResultadoGauss MetodoGaussJordan(int dim, double[,] matriz)
         {
+            ResultadoGauss resp;
             for (int i = 0; i <= dim - 1; i++)
             {
                 double coeficiente = matriz[i, i];
@@ -309,11 +321,13 @@ namespace MetodosNumericos
                 resultado[i] = matriz[i, dim];
             }
 
-            return resultado;
+            resp.resultados = resultado;
+            return resp;
         }
 
-        public static double[] MetodoGaussSeidel(int dim, double[,] M, int iteraciones, double tolerancia)
+        public static ResultadoGauss MetodoGaussSeidel(int dim, double[,] M, int iteraciones, double tolerancia)
         {
+            ResultadoGauss resp;
             bool bandera = false;
             double[] VectorResultados = new double[dim];
             double[] VectorAnterior = new double[dim];
@@ -358,9 +372,14 @@ namespace MetodosNumericos
             }
             if (iteraciones >= contador)
             {
-                return null;
+                resp.resultados = null;
+            } else
+            {
+                resp.resultados = VectorResultados;
             }
-            return VectorResultados;
+            resp.nro_iteraciones = contador;
+
+            return resp;
         }
     }
 }
