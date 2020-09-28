@@ -314,13 +314,12 @@ namespace MetodosNumericos
 
         public static double[] MetodoGaussSeidel(int dim, double[,] M, int iteraciones, double tolerancia)
         {
-            bool bandera = true;
+            bool bandera = false;
             double[] VectorResultados = new double[dim];
             double[] VectorAnterior = new double[dim];
             int contador = 0;
-            double resultado;
 
-            while (iteraciones >= contador || bandera == false)
+            while (iteraciones >= contador && bandera == false)
             {
                 contador++;
                 if (contador > 1)
@@ -330,27 +329,31 @@ namespace MetodosNumericos
 
                 for (int i = 0; i < dim; i++)
                 {
-                    double x;
-                    resultado = M[i, dim];
-                    x = M[i, i];
+                    double resultado = M[i, dim];
+                    double x = M[i, i];
 
                     for (int j = 0; j < dim; j++)
                     {
                         if (i != j)
                         {                            
-                            resultado = resultado - (M[i, j]) * (VectorResultados[j]);
+                            resultado = resultado - (M[i, j] * VectorResultados[j]);
                         }
                     }
-                    x = Convert.ToDouble(resultado) / x;
+                    x = resultado / x;
                     VectorResultados[i] = x;
                 }
 
+                int cont_aux = 0;
                 for (int i = 0; i < dim; i++)
                 {                   
                     if(Math.Abs(VectorResultados[i] - VectorAnterior[i]) < tolerancia)
                     {
-                        bandera = false;
+                        cont_aux++;
                     }
+                }
+                if (cont_aux == dim)
+                {
+                    bandera = true;
                 }
             }
             if (iteraciones >= contador)

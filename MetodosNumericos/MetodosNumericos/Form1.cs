@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -161,9 +162,9 @@ namespace WindowsFormsApp2
                         TextBox txt = new TextBox();
                         txt.Location = new Point(pointX, pointY);
                         txt.Name = $"txt{i}{j}";
-                        txt.AutoSize = false;
-                        txt.Size = new Size(30, 30);
-                        txt.Font = new Font("Microsoft Sans Serif", 12);
+                        txt.AutoSize = true;
+                        txt.Size = new Size(45, 30);
+                        txt.Font = new Font("Microsoft Sans Serif", 10);
                         matriz.Controls.Add(txt);
                         pointX += 50;
                         if (j == tamaño)
@@ -176,44 +177,48 @@ namespace WindowsFormsApp2
                     pointY += 50;
                     pointX = 30;
                 }
-            } 
+            }
             catch (Exception)
             {
-                MessageBox.Show("Ingrese un valor válido","Error");
+                MessageBox.Show("Ingrese un valor válido", "Error");
             }
 
+        }
+
+        private double[,] obtenerMatriz()
+        {
+            int tamaño = int.Parse(tam_matriz.Text);
+            double[,] matriz_aux = new double[tamaño, tamaño + 1];
+            for (int i = 0; i < tamaño; i++)
+            {
+                for (int j = 0; j < tamaño + 1; j++)
+                {
+                    Control tbx = matriz.Controls.Find("txt" + i.ToString() + j.ToString(), true).First();
+                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
+                }
+            }
+            return matriz_aux;
+        }
+
+        private void verResultadosMetodosGauss(double[] resultado)
+        {
+            string texto_result = "";
+            for (int i = 0; i < resultado.Length; i++)
+            {
+                texto_result += "X" + i.ToString() + " = " + resultado[i] + ".\n";
+            }
+            MessageBox.Show(texto_result, "Resultados");
         }
 
         private void button_GaussJordan_Click(object sender, EventArgs e)
         {
-            int tamaño = int.Parse(tam_matriz.Text);
-            double[,] matriz_aux = new double[tamaño, tamaño + 1];
-            for (int i = 0; i < tamaño; i++)
-            {
-                for (int j = 0; j < tamaño + 1; j++)
-                {
-
-                    Control tbx = matriz.Controls.Find("(" + i.ToString() + "," + j.ToString() + ")", true).First();
-                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
-                }
-            }
-            MetodoGaussJordan(tamaño, matriz_aux);
+            verResultadosMetodosGauss(MetodoGaussJordan(int.Parse(tam_matriz.Text), obtenerMatriz()));
         }
 
         private void button_GaussSeidel_Click(object sender, EventArgs e)
         {
-            int tamaño = int.Parse(tam_matriz.Text);
-            double[,] matriz_aux = new double[tamaño, tamaño + 1];
-            for (int i = 0; i < tamaño; i++)
-            {
-                for (int j = 0; j < tamaño + 1; j++)
-                {
-
-                    Control tbx = matriz.Controls.Find("(" + i.ToString() + "," + j.ToString() + ")", true).First();
-                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
-                }
-            }
-            MetodoGaussSeidel(tamaño, matriz_aux, 100, 0.0001);
+            verResultadosMetodosGauss(MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, 0.0001));
         }
+
     }
 }
