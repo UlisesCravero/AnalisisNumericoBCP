@@ -205,7 +205,7 @@ namespace WindowsFormsApp2
             string texto_result = "";
             for (int i = 0; i < resultado.Length; i++)
             {
-                texto_result += "X" + i.ToString() + " = " + resultado[i] + ".\n";
+                texto_result += "X" + i.ToString() + " = " + resultado[i] + "\n";
             }
             return texto_result;
         }

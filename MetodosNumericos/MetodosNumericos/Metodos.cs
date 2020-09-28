@@ -294,7 +294,7 @@ namespace MetodosNumericos
 
         public static ResultadoGauss MetodoGaussJordan(int dim, double[,] matriz)
         {
-            ResultadoGauss resp;
+            ResultadoGauss resp = new ResultadoGauss();
             for (int i = 0; i <= dim - 1; i++)
             {
                 double coeficiente = matriz[i, i];
@@ -327,7 +327,7 @@ namespace MetodosNumericos
 
         public static ResultadoGauss MetodoGaussSeidel(int dim, double[,] M, int iteraciones, double tolerancia)
         {
-            ResultadoGauss resp;
+            ResultadoGauss resp = new ResultadoGauss();
             bool bandera = false;
             double[] VectorResultados = new double[dim];
             double[] VectorAnterior = new double[dim];
@@ -370,7 +370,7 @@ namespace MetodosNumericos
                     bandera = true;
                 }
             }
-            if (iteraciones >= contador)
+            if (contador >= iteraciones)
             {
                 resp.resultados = null;
             } else
