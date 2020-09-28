@@ -360,7 +360,7 @@ namespace MetodosNumericos
                 int cont_aux = 0;
                 for (int i = 0; i < dim; i++)
                 {                   
-                    if(Math.Abs(VectorResultados[i] - VectorAnterior[i]) < tolerancia)
+                    if(Math.Abs(VectorResultados[i] - VectorAnterior[i]) <= tolerancia)
                     {
                         cont_aux++;
                     }
