@@ -55,6 +55,9 @@
             this.textbox_Tolerancia = new System.Windows.Forms.TextBox();
             this.textbox_funcion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tol_seidel = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label_Metodo = new System.Windows.Forms.Label();
             this.button_GaussSeidel = new System.Windows.Forms.Button();
             this.button_GaussJordan = new System.Windows.Forms.Button();
@@ -211,7 +214,7 @@
             // label_ResultadoIteraciones
             // 
             this.label_ResultadoIteraciones.AutoSize = true;
-            this.label_ResultadoIteraciones.Location = new System.Drawing.Point(277, 22);
+            this.label_ResultadoIteraciones.Location = new System.Drawing.Point(276, 22);
             this.label_ResultadoIteraciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_ResultadoIteraciones.Name = "label_ResultadoIteraciones";
             this.label_ResultadoIteraciones.Size = new System.Drawing.Size(18, 17);
@@ -358,6 +361,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.tol_seidel);
+            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label_Metodo);
             this.tabPage2.Controls.Add(this.button_GaussSeidel);
             this.tabPage2.Controls.Add(this.button_GaussJordan);
@@ -373,6 +379,32 @@
             this.tabPage2.Text = "Unidad 2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(820, 113);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 17);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Tolerancia:";
+            // 
+            // tol_seidel
+            // 
+            this.tol_seidel.Location = new System.Drawing.Point(903, 113);
+            this.tol_seidel.Name = "tol_seidel";
+            this.tol_seidel.Size = new System.Drawing.Size(82, 22);
+            this.tol_seidel.TabIndex = 8;
+            this.tol_seidel.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "label8";
+            // 
             // label_Metodo
             // 
             this.label_Metodo.AutoSize = true;
@@ -385,7 +417,7 @@
             // 
             // button_GaussSeidel
             // 
-            this.button_GaussSeidel.Location = new System.Drawing.Point(820, 101);
+            this.button_GaussSeidel.Location = new System.Drawing.Point(820, 142);
             this.button_GaussSeidel.Margin = new System.Windows.Forms.Padding(4);
             this.button_GaussSeidel.Name = "button_GaussSeidel";
             this.button_GaussSeidel.Size = new System.Drawing.Size(165, 27);
@@ -551,6 +583,9 @@
         private System.Windows.Forms.Label label_Metodo;
         private System.Windows.Forms.Button button_GaussSeidel;
         private System.Windows.Forms.Button button_GaussJordan;
+        private System.Windows.Forms.TextBox tol_seidel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
     }
 }
 

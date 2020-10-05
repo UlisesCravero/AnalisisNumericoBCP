@@ -128,8 +128,8 @@ namespace WindowsFormsApp2
             }
 
             label_ResultadoIteraciones.Text = resultado.nro_iteraciones.ToString();
-            label_ResultadoErrorR.Text = resultado.error.ToString();
-            label_ResultadoSolucion.Text = resultado.raiz.ToString();
+            label_ResultadoErrorR.Text = (Math.Round(resultado.error,5)).ToString("0." + new string('#', 339));
+            label_ResultadoSolucion.Text = (Math.Round(resultado.raiz,5)).ToString("0." + new string('#', 339));
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -218,13 +218,12 @@ namespace WindowsFormsApp2
 
         private void button_GaussSeidel_Click(object sender, EventArgs e)
         {
-            ResultadoGauss resp = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, 0.0001);
+            ResultadoGauss resp = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, double.Parse(tol_seidel.Text));
             if (resp.resultados == null)
             {
                 MessageBox.Show("Número de iteraciones máximas superadas, el método no es convergente", "Resultados Método Gauss-Seidel");
             }
             else MessageBox.Show(obtenerResultadosMetodos(resp.resultados) + $"en {resp.nro_iteraciones} iteraciones.", "Resultados Método Gauss-Seidel");
         }
-
     }
 }
