@@ -37,6 +37,17 @@ namespace MetodosNumericos
             public double[] resultados;
         }
 
+        public struct ResultadoAjuste
+        {
+            public ResultadoAjuste(string funcion_, double correlacion_)
+            {
+                funcion = funcion_;
+                correlacion = correlacion_;
+            }
+            public string funcion;
+            public double correlacion;
+        }
+
         public static Resultado Biseccion(string funcion, double xi_, double xd_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
@@ -381,5 +392,7 @@ namespace MetodosNumericos
 
             return resp;
         }
+
+        public static void Regresion_lineal() {}
     }
 }

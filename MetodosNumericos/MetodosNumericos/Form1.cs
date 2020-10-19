@@ -115,8 +115,7 @@ namespace WindowsFormsApp2
                     break;
                 case 1:
                     resultado = Regla_falsa(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_LD.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
-                    break;
-                case 2:
+                    break;                case 2:
                     resultado = Newton_raphson(textbox_funcion.Text, double.Parse(textbox_LI.Text), double.Parse(textbox_Tolerancia.Text), int.Parse(textbox_IterMax.Text));
                     break;
                 case 3:
@@ -218,12 +217,59 @@ namespace WindowsFormsApp2
 
         private void button_GaussSeidel_Click(object sender, EventArgs e)
         {
-            ResultadoGauss resp = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 100, double.Parse(tol_seidel.Text));
+            ResultadoGauss resp = MetodoGaussSeidel(int.Parse(tam_matriz.Text), obtenerMatriz(), 1000, double.Parse(tol_seidel.Text));
             if (resp.resultados == null)
             {
                 MessageBox.Show("Número de iteraciones máximas superadas, el método no es convergente", "Resultados Método Gauss-Seidel");
             }
             else MessageBox.Show(obtenerResultadosMetodos(resp.resultados) + $"en {resp.nro_iteraciones} iteraciones.", "Resultados Método Gauss-Seidel");
+        }
+
+        private void generar_xy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int tamaño = int.Parse(cant_pares.Text);
+                int pointX = 5;
+                int pointY = 0;
+                matriz_xy.Controls.Clear();
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < tamaño; j++)
+                    {
+                        TextBox txt = new TextBox();
+                        txt.Location = new Point(pointX, pointY);
+                        txt.Name = $"txt{i}{j}";
+                        txt.AutoSize = true;
+                        txt.Size = new Size(45, 30);
+                        txt.Font = new Font("Microsoft Sans Serif", 10);
+                        matriz_xy.Controls.Add(txt);
+                        pointX += 50;
+                    }
+                    pointY += 40;
+                    pointX = 5;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese un valor válido", "Error");
+            }
+
+        }
+
+        private double[,] obtenerMatrizXY()
+        {
+            int tamaño = int.Parse(cant_pares.Text);
+            double[,] matriz_aux = new double[2, tamaño];
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < tamaño; j++)
+                {
+                    Control tbx = matriz.Controls.Find("txt" + i.ToString() + j.ToString(), true).First();
+                    matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
+                }
+            }
+            return matriz_aux;
         }
     }
 }
