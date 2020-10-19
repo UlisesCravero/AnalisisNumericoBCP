@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -46,6 +47,7 @@ namespace MetodosNumericos
             }
             public string funcion;
             public double correlacion;
+            public string ajuste;
         }
 
         public static Resultado Biseccion(string funcion, double xi_, double xd_, double tole, int iter_max)
@@ -393,6 +395,49 @@ namespace MetodosNumericos
             return resp;
         }
 
-        public static void Regresion_lineal() {}
+        public static ResultadoAjuste Regresion_lineal(double tolerancia, double[,] matriz) 
+        {
+            ResultadoAjuste res = new ResultadoAjuste();
+            double sumx = 0;
+            double sumy = 0;
+            double sumxy = 0;
+            double sumx2 = 0;
+            int contador = matriz.GetLength(1);
+
+            for(int i=0; i < contador; i++)
+            {
+                sumx += matriz[0, i];
+                sumy += matriz[1, i];
+                sumxy += matriz[0, i] * matriz[1, i];
+                sumx2 += matriz[0, i] * matriz[0, i];
+            }
+
+            double a1 = (contador * sumxy - sumx * sumy) / (contador * sumx2 - Math.Pow(sumx, 2));
+            double a0 = (sumy / contador) - (a1 * (sumx / contador));
+
+            double sr = 0;
+            double st = 0;
+
+            for(int i=0; i<contador-1; i++)
+            {
+                sr += Math.Pow((a1 * matriz[0, i]) + a0 - matriz[1, i], 2);
+                st += Math.Pow((sumy / contador) - matriz[1, i], 2);
+            }
+
+            double r = Math.Sqrt((st-sr)/st)*100;
+
+            if (r < tolerancia)
+            {
+                res.ajuste = "El ajuste no es aceptable";
+            }
+            else
+            {
+                res.ajuste = "El ajuste es aceptable";
+            }
+            res.correlacion = r;
+            res.funcion = $"y = {a1}x + {a0}";
+
+            return res;
+        }
     }
 }
