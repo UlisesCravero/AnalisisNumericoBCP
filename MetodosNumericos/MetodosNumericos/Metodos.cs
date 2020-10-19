@@ -40,10 +40,11 @@ namespace MetodosNumericos
 
         public struct ResultadoAjuste
         {
-            public ResultadoAjuste(string funcion_, double correlacion_)
+            public ResultadoAjuste(string funcion_, double correlacion_, string ajuste_)
             {
                 funcion = funcion_;
                 correlacion = correlacion_;
+                ajuste = ajuste_;
             }
             public string funcion;
             public double correlacion;
@@ -395,6 +396,8 @@ namespace MetodosNumericos
             return resp;
         }
 
+        //unidad 3 
+
         public static ResultadoAjuste Regresion_lineal(double tolerancia, double[,] matriz) 
         {
             ResultadoAjuste res = new ResultadoAjuste();
@@ -426,7 +429,7 @@ namespace MetodosNumericos
 
             double r = Math.Sqrt((st-sr)/st)*100;
 
-            if (r < tolerancia)
+            if (r <= tolerancia)
             {
                 res.ajuste = "El ajuste no es aceptable";
             }
@@ -434,10 +437,22 @@ namespace MetodosNumericos
             {
                 res.ajuste = "El ajuste es aceptable";
             }
-            res.correlacion = r;
-            res.funcion = $"y = {a1}x + {a0}";
+            res.correlacion = (Math.Round(r, 5));
+            res.funcion = $"y = {(Math.Round(a1, 5)).ToString("0." + new string('#', 339))}x + {(Math.Round(a0, 5)).ToString("0." + new string('#', 339))}";
 
             return res;
         }
+
+        public static ResultadoAjuste Regresion_polinomial()
+        {
+            return new ResultadoAjuste();
+        }
+
+        public static ResultadoAjuste Lagrange()
+        {
+            return new ResultadoAjuste();
+        }
+
+
     }
 }

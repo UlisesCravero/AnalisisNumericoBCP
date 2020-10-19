@@ -67,18 +67,15 @@
             this.tam_matriz = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.funcion = new System.Windows.Forms.TextBox();
-            this.correlacion = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.calcular = new System.Windows.Forms.Button();
+            this.calcularAjuste = new System.Windows.Forms.Button();
             this.metodos_box = new System.Windows.Forms.Label();
-            this.metodos = new System.Windows.Forms.ComboBox();
+            this.metodosAjuste = new System.Windows.Forms.ComboBox();
             this.tolerancia = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.valores = new System.Windows.Forms.GroupBox();
-            this.cargar_val = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.matriz_xy = new System.Windows.Forms.Panel();
@@ -87,6 +84,9 @@
             this.cant_pares = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label_ajuste = new System.Windows.Forms.Label();
+            this.label_funcion = new System.Windows.Forms.Label();
+            this.label_correlacion = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -518,35 +518,22 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.funcion);
-            this.groupBox5.Controls.Add(this.correlacion);
+            this.groupBox5.Controls.Add(this.label_correlacion);
+            this.groupBox5.Controls.Add(this.label_funcion);
+            this.groupBox5.Controls.Add(this.label_ajuste);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(320, 306);
+            this.groupBox5.Location = new System.Drawing.Point(380, 284);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(252, 174);
+            this.groupBox5.Size = new System.Drawing.Size(391, 174);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Resultados";
             // 
-            // funcion
-            // 
-            this.funcion.Location = new System.Drawing.Point(131, 34);
-            this.funcion.Name = "funcion";
-            this.funcion.Size = new System.Drawing.Size(100, 22);
-            this.funcion.TabIndex = 4;
-            // 
-            // correlacion
-            // 
-            this.correlacion.Location = new System.Drawing.Point(131, 81);
-            this.correlacion.Name = "correlacion";
-            this.correlacion.Size = new System.Drawing.Size(100, 22);
-            this.correlacion.TabIndex = 3;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(27, 84);
+            this.label16.Location = new System.Drawing.Point(53, 84);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(98, 17);
             this.label16.TabIndex = 1;
@@ -555,7 +542,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 39);
+            this.label15.Location = new System.Drawing.Point(30, 40);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(121, 17);
             this.label15.TabIndex = 0;
@@ -563,26 +550,27 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.calcular);
+            this.groupBox4.Controls.Add(this.calcularAjuste);
             this.groupBox4.Controls.Add(this.metodos_box);
-            this.groupBox4.Controls.Add(this.metodos);
+            this.groupBox4.Controls.Add(this.metodosAjuste);
             this.groupBox4.Controls.Add(this.tolerancia);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Location = new System.Drawing.Point(35, 306);
+            this.groupBox4.Location = new System.Drawing.Point(35, 284);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(242, 174);
+            this.groupBox4.Size = new System.Drawing.Size(297, 174);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Elección parámetros";
             // 
-            // calcular
+            // calcularAjuste
             // 
-            this.calcular.Location = new System.Drawing.Point(105, 120);
-            this.calcular.Name = "calcular";
-            this.calcular.Size = new System.Drawing.Size(110, 31);
-            this.calcular.TabIndex = 4;
-            this.calcular.Text = "Calcular";
-            this.calcular.UseVisualStyleBackColor = true;
+            this.calcularAjuste.Location = new System.Drawing.Point(127, 120);
+            this.calcularAjuste.Name = "calcularAjuste";
+            this.calcularAjuste.Size = new System.Drawing.Size(110, 31);
+            this.calcularAjuste.TabIndex = 4;
+            this.calcularAjuste.Text = "Calcular";
+            this.calcularAjuste.UseVisualStyleBackColor = true;
+            this.calcularAjuste.Click += new System.EventHandler(this.calcularAjuste_Click);
             // 
             // metodos_box
             // 
@@ -593,19 +581,23 @@
             this.metodos_box.TabIndex = 3;
             this.metodos_box.Text = "Método:";
             // 
-            // metodos
+            // metodosAjuste
             // 
-            this.metodos.FormattingEnabled = true;
-            this.metodos.Location = new System.Drawing.Point(94, 77);
-            this.metodos.Name = "metodos";
-            this.metodos.Size = new System.Drawing.Size(121, 24);
-            this.metodos.TabIndex = 2;
+            this.metodosAjuste.FormattingEnabled = true;
+            this.metodosAjuste.Items.AddRange(new object[] {
+            "Regresión lineal",
+            "Regresión polinomial",
+            "Lagrange"});
+            this.metodosAjuste.Location = new System.Drawing.Point(94, 77);
+            this.metodosAjuste.Name = "metodosAjuste";
+            this.metodosAjuste.Size = new System.Drawing.Size(143, 24);
+            this.metodosAjuste.TabIndex = 2;
             // 
             // tolerancia
             // 
-            this.tolerancia.Location = new System.Drawing.Point(115, 35);
+            this.tolerancia.Location = new System.Drawing.Point(140, 35);
             this.tolerancia.Name = "tolerancia";
-            this.tolerancia.Size = new System.Drawing.Size(100, 22);
+            this.tolerancia.Size = new System.Drawing.Size(60, 22);
             this.tolerancia.TabIndex = 1;
             // 
             // label14
@@ -613,13 +605,12 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(29, 39);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 17);
+            this.label14.Size = new System.Drawing.Size(105, 17);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Tolerancia:";
+            this.label14.Text = "Tolerancia (%):";
             // 
             // valores
             // 
-            this.valores.Controls.Add(this.cargar_val);
             this.valores.Controls.Add(this.label17);
             this.valores.Controls.Add(this.label13);
             this.valores.Controls.Add(this.matriz_xy);
@@ -628,19 +619,10 @@
             this.valores.Controls.Add(this.cant_pares);
             this.valores.Location = new System.Drawing.Point(35, 48);
             this.valores.Name = "valores";
-            this.valores.Size = new System.Drawing.Size(987, 226);
+            this.valores.Size = new System.Drawing.Size(987, 199);
             this.valores.TabIndex = 0;
             this.valores.TabStop = false;
             this.valores.Text = "Valores a ingresar";
-            // 
-            // cargar_val
-            // 
-            this.cargar_val.Location = new System.Drawing.Point(842, 185);
-            this.cargar_val.Name = "cargar_val";
-            this.cargar_val.Size = new System.Drawing.Size(139, 35);
-            this.cargar_val.TabIndex = 7;
-            this.cargar_val.Text = "Cargar valores";
-            this.cargar_val.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -708,6 +690,32 @@
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            // 
+            // label_ajuste
+            // 
+            this.label_ajuste.AutoSize = true;
+            this.label_ajuste.Location = new System.Drawing.Point(108, 134);
+            this.label_ajuste.Name = "label_ajuste";
+            this.label_ajuste.Size = new System.Drawing.Size(0, 17);
+            this.label_ajuste.TabIndex = 5;
+            // 
+            // label_funcion
+            // 
+            this.label_funcion.AutoSize = true;
+            this.label_funcion.Location = new System.Drawing.Point(173, 40);
+            this.label_funcion.Name = "label_funcion";
+            this.label_funcion.Size = new System.Drawing.Size(18, 17);
+            this.label_funcion.TabIndex = 6;
+            this.label_funcion.Text = "--";
+            // 
+            // label_correlacion
+            // 
+            this.label_correlacion.AutoSize = true;
+            this.label_correlacion.Location = new System.Drawing.Point(173, 84);
+            this.label_correlacion.Name = "label_correlacion";
+            this.label_correlacion.Size = new System.Drawing.Size(18, 17);
+            this.label_correlacion.TabIndex = 7;
+            this.label_correlacion.Text = "--";
             // 
             // Form1
             // 
@@ -786,23 +794,23 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox valores;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox funcion;
-        private System.Windows.Forms.TextBox correlacion;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button calcular;
+        private System.Windows.Forms.Button calcularAjuste;
         private System.Windows.Forms.Label metodos_box;
-        private System.Windows.Forms.ComboBox metodos;
+        private System.Windows.Forms.ComboBox metodosAjuste;
         private System.Windows.Forms.TextBox tolerancia;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button generar_xy;
         private System.Windows.Forms.TextBox cant_pares;
-        private System.Windows.Forms.Button cargar_val;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel matriz_xy;
+        private System.Windows.Forms.Label label_ajuste;
+        private System.Windows.Forms.Label label_correlacion;
+        private System.Windows.Forms.Label label_funcion;
     }
 }
 

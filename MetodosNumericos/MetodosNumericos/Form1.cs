@@ -265,11 +265,38 @@ namespace WindowsFormsApp2
             {
                 for (int j = 0; j < tamaño; j++)
                 {
-                    Control tbx = matriz.Controls.Find("txt" + i.ToString() + j.ToString(), true).First();
+                    Control tbx = matriz_xy.Controls.Find("txt" + i.ToString() + j.ToString(), true).First();
                     matriz_aux[i, j] = double.Parse((tbx as TextBox).Text);
                 }
             }
             return matriz_aux;
+        }
+
+        private void calcularAjuste_Click(object sender, EventArgs e)
+        {
+            ResultadoAjuste resultado = new ResultadoAjuste();
+            int metodo = metodosAjuste.SelectedIndex;
+
+            switch (metodo)
+            {
+                case 0:
+                    resultado = Regresion_lineal(double.Parse(tolerancia.Text), obtenerMatrizXY());
+                    break;
+                case 1:
+                    resultado = Regresion_polinomial();
+                    break;
+                case 2:
+                    resultado = Lagrange();
+                    break;
+                default:
+                    MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");
+                    break;
+            }
+
+            label_funcion.Text = resultado.funcion;
+            label_correlacion.Text = resultado.correlacion.ToString();
+            label_ajuste.Text = resultado.ajuste;
+            
         }
     }
 }
