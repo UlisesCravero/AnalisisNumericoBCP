@@ -512,5 +512,17 @@ namespace MetodosNumericos
 
             return res;
         }
+    
+        //unidad 4
+
+        public static string Trapecio_simple(string funcion, double int_min, double int_max)
+        {
+
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression fmin = new Expression("f(" + int_min + ")", f);
+            Expression fmax = new Expression("f(" + int_max + ")", f);
+
+            return Math.Round((((fmin.calculate() + fmax.calculate()) * (int_max - int_min)) / 2),5).ToString();
+        }
     }
 }

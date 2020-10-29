@@ -88,7 +88,22 @@
             this.generar_xy = new System.Windows.Forms.Button();
             this.cant_pares = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cant_sub_int = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.int_max = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.int_min = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.funcion_a_integrar = new System.Windows.Forms.TextBox();
+            this.metodos_integracion = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.calcular_integral = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.integral_obtenida = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -101,6 +116,9 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.valores.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,7 +127,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(4, 13);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -635,7 +653,7 @@
             "Regresión polinomial"});
             this.metodosAjuste.Location = new System.Drawing.Point(94, 119);
             this.metodosAjuste.Name = "metodosAjuste";
-            this.metodosAjuste.Size = new System.Drawing.Size(143, 24);
+            this.metodosAjuste.Size = new System.Drawing.Size(171, 24);
             this.metodosAjuste.TabIndex = 2;
             // 
             // tolerancia
@@ -722,6 +740,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox7);
+            this.tabPage4.Controls.Add(this.groupBox6);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
@@ -731,10 +751,153 @@
             this.tabPage4.Text = "Unidad 4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.integral_obtenida);
+            this.groupBox7.Controls.Add(this.label24);
+            this.groupBox7.Location = new System.Drawing.Point(23, 318);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(419, 100);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Valores de salida";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.calcular_integral);
+            this.groupBox6.Controls.Add(this.cant_sub_int);
+            this.groupBox6.Controls.Add(this.label23);
+            this.groupBox6.Controls.Add(this.int_max);
+            this.groupBox6.Controls.Add(this.label22);
+            this.groupBox6.Controls.Add(this.int_min);
+            this.groupBox6.Controls.Add(this.label21);
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.funcion_a_integrar);
+            this.groupBox6.Controls.Add(this.metodos_integracion);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Location = new System.Drawing.Point(23, 23);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(419, 273);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Valores de entrada";
+            // 
+            // cant_sub_int
+            // 
+            this.cant_sub_int.Location = new System.Drawing.Point(221, 175);
+            this.cant_sub_int.Name = "cant_sub_int";
+            this.cant_sub_int.Size = new System.Drawing.Size(47, 22);
+            this.cant_sub_int.TabIndex = 19;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(82, 178);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(133, 17);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Cant sub intervalos:";
+            // 
+            // int_max
+            // 
+            this.int_max.Location = new System.Drawing.Point(229, 130);
+            this.int_max.Name = "int_max";
+            this.int_max.Size = new System.Drawing.Size(39, 22);
+            this.int_max.TabIndex = 17;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(207, 133);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(16, 17);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "a";
+            // 
+            // int_min
+            // 
+            this.int_min.Location = new System.Drawing.Point(162, 130);
+            this.int_min.Name = "int_min";
+            this.int_min.Size = new System.Drawing.Size(39, 22);
+            this.int_min.TabIndex = 15;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(82, 133);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(66, 17);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "Intervalo:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(82, 92);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(62, 17);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Función:";
+            // 
+            // funcion_a_integrar
+            // 
+            this.funcion_a_integrar.Location = new System.Drawing.Point(162, 89);
+            this.funcion_a_integrar.Name = "funcion_a_integrar";
+            this.funcion_a_integrar.Size = new System.Drawing.Size(100, 22);
+            this.funcion_a_integrar.TabIndex = 12;
+            // 
+            // metodos_integracion
+            // 
+            this.metodos_integracion.FormattingEnabled = true;
+            this.metodos_integracion.Items.AddRange(new object[] {
+            "Trapecio simple",
+            "Trapecios múltiples",
+            "Simpson 1/3 simple"});
+            this.metodos_integracion.Location = new System.Drawing.Point(162, 45);
+            this.metodos_integracion.Name = "metodos_integracion";
+            this.metodos_integracion.Size = new System.Drawing.Size(174, 24);
+            this.metodos_integracion.TabIndex = 11;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(82, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 17);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "Método:";
+            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            // 
+            // calcular_integral
+            // 
+            this.calcular_integral.Location = new System.Drawing.Point(280, 222);
+            this.calcular_integral.Name = "calcular_integral";
+            this.calcular_integral.Size = new System.Drawing.Size(114, 27);
+            this.calcular_integral.TabIndex = 20;
+            this.calcular_integral.Text = "Calcular";
+            this.calcular_integral.UseVisualStyleBackColor = true;
+            this.calcular_integral.Click += new System.EventHandler(this.calcular_integral_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(23, 48);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(118, 17);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Integral obtenida:";
+            // 
+            // integral_obtenida
+            // 
+            this.integral_obtenida.AutoSize = true;
+            this.integral_obtenida.Location = new System.Drawing.Point(147, 48);
+            this.integral_obtenida.Name = "integral_obtenida";
+            this.integral_obtenida.Size = new System.Drawing.Size(0, 17);
+            this.integral_obtenida.TabIndex = 1;
             // 
             // Form1
             // 
@@ -766,6 +929,11 @@
             this.groupBox4.PerformLayout();
             this.valores.ResumeLayout(false);
             this.valores.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -832,6 +1000,21 @@
         private System.Windows.Forms.Label label_funcion;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox grado;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox cant_sub_int;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox int_max;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox int_min;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox funcion_a_integrar;
+        private System.Windows.Forms.ComboBox metodos_integracion;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button calcular_integral;
+        private System.Windows.Forms.Label integral_obtenida;
+        private System.Windows.Forms.Label label24;
     }
 }
 

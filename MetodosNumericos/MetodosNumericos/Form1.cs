@@ -296,5 +296,25 @@ namespace WindowsFormsApp2
             
         }
 
+        private void calcular_integral_Click(object sender, EventArgs e)
+        {
+            string resultado = "";
+            int metodo = metodos_integracion.SelectedIndex;
+
+            switch (metodo)
+            {
+                case 0:
+                    resultado = Trapecio_simple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
+                    break;
+                case 1:
+                    resultado = "";
+                    break;
+                default:
+                    MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");
+                    break;
+            }
+
+            integral_obtenida.Text = resultado;
+        }
     }
 }
