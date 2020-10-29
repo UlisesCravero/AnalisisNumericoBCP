@@ -515,16 +515,16 @@ namespace MetodosNumericos
     
         //unidad 4
 
-        public static string Trapecio_simple(string funcion, double int_min, double int_max)
+        public static double Trapecio_simple(string funcion, double int_min, double int_max)
         {
             Function f = new Function("f(x)" + "=" + funcion);
             Expression fmin = new Expression("f(" + int_min + ")", f);
             Expression fmax = new Expression("f(" + int_max + ")", f);
 
-            return Math.Round((((fmin.calculate() + fmax.calculate()) * (int_max - int_min)) / 2),5).ToString();
+            return Math.Round((((fmin.calculate() + fmax.calculate()) * (int_max - int_min)) / 2),5);
         }
 
-        public static string Trapecio_multiple(string funcion, double int_min, double int_max, int intervalos)
+        public static double Trapecios_multiples(string funcion, double int_min, double int_max, int intervalos)
         {
             Function f = new Function("f(x)" + "=" + funcion);
             Expression fmin = new Expression("f(" + int_min + ")", f);
@@ -539,7 +539,18 @@ namespace MetodosNumericos
                 suma += f_aux.calculate();
             }
 
-            return Math.Round(((h / 2) * (fmin.calculate() + (suma * 2) + fmax.calculate())), 5).ToString();
+            return Math.Round(((h / 2) * (fmin.calculate() + (suma * 2) + fmax.calculate())), 5);
+        }
+
+        public static double Simpson_untercio(string funcion, double int_min, double int_max)
+        {
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression fmin = new Expression("f(" + int_min + ")", f);
+            Expression fmax = new Expression("f(" + int_max + ")", f);
+            Expression f_aux = new Expression("f(" + int_max + ")", f);
+
+            double h = (int_max - int_min) / 2;
+            return Math.Round((h / 3) * (fmin.calculate() + (4 * f_aux.calculate()) + fmax.calculate()),5);
         }
     }
 }

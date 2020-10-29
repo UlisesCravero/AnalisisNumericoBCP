@@ -298,7 +298,7 @@ namespace WindowsFormsApp2
 
         private void calcular_integral_Click(object sender, EventArgs e)
         {
-            string resultado = "";
+            double resultado = 0;
             int metodo = metodos_integracion.SelectedIndex;
 
             switch (metodo)
@@ -307,14 +307,17 @@ namespace WindowsFormsApp2
                     resultado = Trapecio_simple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
                     break;
                 case 1:
-                    resultado = Trapecio_multiple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text), int.Parse(cant_sub_int.Text));
+                    resultado = Trapecios_multiples(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text), int.Parse(cant_sub_int.Text));
+                    break;
+                case 2:
+                    resultado = Simpson_untercio(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
                     break;
                 default:
                     MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");
                     break;
             }
 
-            integral_obtenida.Text = resultado;
+            integral_obtenida.Text = resultado.ToString();
         }
     }
 }
