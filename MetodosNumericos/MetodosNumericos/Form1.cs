@@ -307,7 +307,7 @@ namespace WindowsFormsApp2
                     resultado = Trapecio_simple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
                     break;
                 case 1:
-                    resultado = "";
+                    resultado = Trapecio_multiple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text), int.Parse(cant_sub_int.Text));
                     break;
                 default:
                     MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");

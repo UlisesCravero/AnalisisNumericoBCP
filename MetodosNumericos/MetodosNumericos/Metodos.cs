@@ -517,12 +517,29 @@ namespace MetodosNumericos
 
         public static string Trapecio_simple(string funcion, double int_min, double int_max)
         {
-
             Function f = new Function("f(x)" + "=" + funcion);
             Expression fmin = new Expression("f(" + int_min + ")", f);
             Expression fmax = new Expression("f(" + int_max + ")", f);
 
             return Math.Round((((fmin.calculate() + fmax.calculate()) * (int_max - int_min)) / 2),5).ToString();
+        }
+
+        public static string Trapecio_multiple(string funcion, double int_min, double int_max, int intervalos)
+        {
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression fmin = new Expression("f(" + int_min + ")", f);
+            Expression fmax = new Expression("f(" + int_max + ")", f);
+
+            double h = (int_max - int_min) / intervalos;
+            double suma = 0;
+            for(int i=1; i<=intervalos-1; i++)
+            {
+                double aux = (i*h)+int_min;
+                Expression f_aux = new Expression("f(" + aux + ")", f);
+                suma += f_aux.calculate();
+            }
+
+            return Math.Round(((h / 2) * (fmin.calculate() + (suma * 2) + fmax.calculate())), 5).ToString();
         }
     }
 }
