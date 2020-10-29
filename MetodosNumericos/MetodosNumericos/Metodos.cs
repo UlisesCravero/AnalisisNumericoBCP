@@ -102,7 +102,7 @@ namespace MetodosNumericos
                             }
                             else
                             {
-                                xi_ = xr;                               
+                                xi_ = xr;
                             }
                             x_ant = xr;
                         }
@@ -110,7 +110,7 @@ namespace MetodosNumericos
                     MessageBox.Show("Se supero el numero de iteraciones maximas permitidas", "Iteraciones maximas alcanzadas");
                     return new Resultado(cont, 0, 0);
                 }
-            }      
+            }
         }
 
         public static Resultado Regla_falsa(string funcion, double xi_, double xd_, double tole, int iter_max)
@@ -181,11 +181,11 @@ namespace MetodosNumericos
                 }
             }
         }
-        
+
         public static Resultado Newton_raphson(string funcion, double xi_, double tole, int iter_max)
         {
             string xi = xi_.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
-            string dxi = (xi_+tole).ToString(CultureInfo.CreateSpecificCulture("en-GB")); //se usa para calcular la deriv por aproximacion
+            string dxi = (xi_ + tole).ToString(CultureInfo.CreateSpecificCulture("en-GB")); //se usa para calcular la deriv por aproximacion
             Function f = new Function("f(x)" + "=" + funcion);
             Expression e = new Expression("f(" + xi + ")", f);
             Expression e_aprox = new Expression("f(" + dxi + ")", f);
@@ -204,7 +204,7 @@ namespace MetodosNumericos
 
                 while (cont < iter_max)
                 {
-                    if(Math.Abs(e_aprox.calculate()) < tole)
+                    if (Math.Abs(e_aprox.calculate()) < tole)
                     {
                         MessageBox.Show("El metodo no es concluyente", "Divergencia por punto min/max o de inflexion");
                         return new Resultado(0, 0, 0);
@@ -267,7 +267,7 @@ namespace MetodosNumericos
                     e2 = new Expression("f(" + xd + ")", f);
                     double denom = (e2.calculate() - e.calculate());
 
-                    if (Math.Abs(denom) < tole) 
+                    if (Math.Abs(denom) < tole)
                     {
                         MessageBox.Show("El metodo no es concluyente", "Divergencia por punto min/max o de inflexion");
                         return new Resultado(0, 0, 0);
@@ -285,7 +285,7 @@ namespace MetodosNumericos
                         xr = ((e2.calculate() * xi_) - (e.calculate() * xd_)) / denom;
 
                         error = Math.Abs((xr - x_ant) / xr);
-                    
+
                         Expression e3 = new Expression("f(" + xr.ToString(CultureInfo.CreateSpecificCulture("en-GB")) + ")", f);
                         if (Math.Abs(e3.calculate()) < tole || (error < tole))
                         {
@@ -363,7 +363,7 @@ namespace MetodosNumericos
                     for (int j = 0; j < dim; j++)
                     {
                         if (i != j)
-                        {                            
+                        {
                             resultado = resultado - (M[i, j] * VectorResultados[j]);
                         }
                     }
@@ -373,8 +373,8 @@ namespace MetodosNumericos
 
                 int cont_aux = 0;
                 for (int i = 0; i < dim; i++)
-                {                   
-                    if(Math.Abs(VectorResultados[i] - VectorAnterior[i]) <= tolerancia)
+                {
+                    if (Math.Abs(VectorResultados[i] - VectorAnterior[i]) <= tolerancia)
                     {
                         cont_aux++;
                     }
@@ -387,7 +387,8 @@ namespace MetodosNumericos
             if (contador >= iteraciones)
             {
                 resp.resultados = null;
-            } else
+            }
+            else
             {
                 resp.resultados = VectorResultados;
             }
@@ -398,7 +399,7 @@ namespace MetodosNumericos
 
         //unidad 3 
 
-        public static ResultadoAjuste Regresion_lineal(double tolerancia, double[,] matriz) 
+        public static ResultadoAjuste Regresion_lineal(double tolerancia, double[,] matriz)
         {
             ResultadoAjuste res = new ResultadoAjuste();
             double sumx = 0;
@@ -407,7 +408,7 @@ namespace MetodosNumericos
             double sumx2 = 0;
             int contador = matriz.GetLength(1);
 
-            for(int i=0; i < contador; i++)
+            for (int i = 0; i < contador; i++)
             {
                 sumx += matriz[0, i];
                 sumy += matriz[1, i];
@@ -421,13 +422,13 @@ namespace MetodosNumericos
             double sr = 0;
             double st = 0;
 
-            for(int i=0; i<contador-1; i++)
+            for (int i = 0; i < contador - 1; i++)
             {
                 sr += Math.Pow((a1 * matriz[0, i]) + a0 - matriz[1, i], 2);
                 st += Math.Pow((sumy / contador) - matriz[1, i], 2);
             }
 
-            double r = Math.Sqrt((st-sr)/st)*100;
+            double r = Math.Sqrt((st - sr) / st) * 100;
 
             if (r <= tolerancia)
             {
@@ -443,16 +444,73 @@ namespace MetodosNumericos
             return res;
         }
 
-        public static ResultadoAjuste Regresion_polinomial()
+        public static ResultadoAjuste Regresion_polinomial(double tolerancia, double[,] matriz, int grado)
         {
-            return new ResultadoAjuste();
+            ResultadoAjuste res = new ResultadoAjuste();
+            double sumx = 0;
+            double sumy = 0;
+            double[,] matriz_gauss = new double[grado + 1, grado + 2];
+            int contador = matriz.GetLength(1);
+
+            for (int i = 0; i < contador; i++)
+            {
+                sumx += matriz[0, i];
+                sumy += matriz[1, i];
+
+                for (int j = 0; j < grado + 1; j++)
+                {
+                    for (int k = 0; k < grado + 1; k++)
+                    {
+                        matriz_gauss[j, k] += Math.Pow(matriz[0, i], k + j);
+                    }
+                    matriz_gauss[j, grado + 1] += matriz[1, i] * Math.Pow(matriz[0, i], j);
+                }
+            }
+
+            ResultadoGauss res_aux = MetodoGaussJordan(grado + 1, matriz_gauss);
+
+            double sr = 0;
+            double st = 0;
+
+            for (int i = 0; i < contador - 1; i++)
+            {
+                st += Math.Pow((sumy / contador) - matriz[1, i], 2);
+                double s = 0;
+                for (int j = 0; j < grado + 1; j++)
+                {
+                    s += (res_aux.resultados[j] * Math.Pow(matriz[0, i], j));
+                }
+                sr += Math.Pow(s - matriz[1, i], 2);
+            }
+
+            double r = Math.Sqrt((st - sr) / st) * 100;
+
+            if (r <= tolerancia)
+            {
+                res.ajuste = "El ajuste no es aceptable";
+            }
+            else
+            {
+                res.ajuste = "El ajuste es aceptable";
+            }
+
+            res.correlacion = (Math.Round(r, 5));
+            
+            res.funcion += "y = ";
+            for (int i = 0; i < res_aux.resultados.Length; i++)
+            {
+                if (res_aux.resultados[i] >= 0)
+                {
+                    res.funcion += $"+ {(Math.Round(res_aux.resultados[i], 2)).ToString("0." + new string('#', 339))}x^{i} ";
+                }
+                else
+                {
+                    res.funcion += $"{(Math.Round(res_aux.resultados[i], 2)).ToString("0." + new string('#', 339))}x^{i} ";
+                }
+                
+            }
+
+            return res;
         }
-
-        public static ResultadoAjuste Lagrange()
-        {
-            return new ResultadoAjuste();
-        }
-
-
     }
 }

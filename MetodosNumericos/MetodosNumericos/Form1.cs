@@ -283,10 +283,7 @@ namespace WindowsFormsApp2
                     resultado = Regresion_lineal(double.Parse(tolerancia.Text), obtenerMatrizXY());
                     break;
                 case 1:
-                    resultado = Regresion_polinomial();
-                    break;
-                case 2:
-                    resultado = Lagrange();
+                    resultado = Regresion_polinomial(double.Parse(tolerancia.Text), obtenerMatrizXY(), int.Parse(grado.Text));
                     break;
                 default:
                     MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");
@@ -298,5 +295,6 @@ namespace WindowsFormsApp2
             label_ajuste.Text = resultado.ajuste;
             
         }
+
     }
 }
