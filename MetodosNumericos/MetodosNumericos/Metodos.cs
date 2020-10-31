@@ -517,25 +517,32 @@ namespace MetodosNumericos
 
         public static double Trapecio_simple(string funcion, double int_min, double int_max)
         {
+            string int_min_ = int_min.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string int_max_ = int_max.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             Function f = new Function("f(x)" + "=" + funcion);
-            Expression fmin = new Expression("f(" + int_min + ")", f);
-            Expression fmax = new Expression("f(" + int_max + ")", f);
+            Expression fmin = new Expression("f(" + int_min_ + ")", f);
+            Expression fmax = new Expression("f(" + int_max_ + ")", f);
 
             return Math.Round((((fmin.calculate() + fmax.calculate()) * (int_max - int_min)) / 2),5);
         }
 
         public static double Trapecios_multiples(string funcion, double int_min, double int_max, int intervalos)
         {
+            string int_min_ = int_min.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string int_max_ = int_max.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             Function f = new Function("f(x)" + "=" + funcion);
-            Expression fmin = new Expression("f(" + int_min + ")", f);
-            Expression fmax = new Expression("f(" + int_max + ")", f);
+            Expression fmin = new Expression("f(" + int_min_ + ")", f);
+            Expression fmax = new Expression("f(" + int_max_ + ")", f);
 
             double h = (int_max - int_min) / intervalos;
             double suma = 0;
             for(int i=1; i<=intervalos-1; i++)
             {
                 double aux = (i*h)+int_min;
-                Expression f_aux = new Expression("f(" + aux + ")", f);
+                string aux_ = aux.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                Expression f_aux = new Expression("f(" + aux_ + ")", f);
                 suma += f_aux.calculate();
             }
 
@@ -544,22 +551,30 @@ namespace MetodosNumericos
 
         public static double Simpson_untercio_simple(string funcion, double int_min, double int_max)
         {
+            string int_min_ = int_min.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string int_max_ = int_max.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             Function f = new Function("f(x)" + "=" + funcion);
-            Expression fmin = new Expression("f(" + int_min + ")", f);
-            Expression fmax = new Expression("f(" + int_max + ")", f);
+            Expression fmin = new Expression("f(" + int_min_ + ")", f);
+            Expression fmax = new Expression("f(" + int_max_ + ")", f);
             
             double h = (int_max - int_min) / 2;
             double aux = h + int_min;
-            Expression f_aux = new Expression("f(" + aux + ")", f);
+            string aux_ = aux.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            Expression f_aux = new Expression("f(" + aux_ + ")", f);
 
             return Math.Round((h / 3) * (fmin.calculate() + (4 * f_aux.calculate()) + fmax.calculate()),5);
         }
+
         public static double Simpson_untercio_multiple(string funcion, double int_min, double int_max, int intervalos)
         {
+            string int_min_ = int_min.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string int_max_ = int_max.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             Function f = new Function("f(x)" + "=" + funcion);
-            Expression fmin = new Expression("f(" + int_min + ")", f);
-            Expression fmax = new Expression("f(" + int_max + ")", f);
-            
+            Expression fmin = new Expression("f(" + int_min_ + ")", f);
+            Expression fmax = new Expression("f(" + int_max_ + ")", f);
+
             double h = (int_max - int_min) / intervalos;
             
             double pares = 0;
@@ -568,7 +583,8 @@ namespace MetodosNumericos
             for (int i = 1; i <= intervalos-1; i++)
             {
                 double aux = int_min + (i * h);
-                Expression f_aux = new Expression("f(" + aux + ")", f);
+                string aux_ = aux.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                Expression f_aux = new Expression("f(" + aux_ + ")", f);
                 if (i%2 == 0)
                 {
                     pares += f_aux.calculate();
@@ -584,15 +600,23 @@ namespace MetodosNumericos
 
         public static double Simpson_tresoctavos_simple(string funcion, double int_min, double int_max)
         {
+            string int_min_ = int_min.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+            string int_max_ = int_max.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             Function f = new Function("f(x)" + "=" + funcion);
-            Expression fmin = new Expression("f(" + int_min + ")", f);
-            Expression fmax = new Expression("f(" + int_max + ")", f);
+            Expression fmin = new Expression("f(" + int_min_ + ")", f);
+            Expression fmax = new Expression("f(" + int_max_ + ")", f);
 
             double h = (int_max - int_min) / 3;
+
             double aux1 = h + int_min;
+            string aux1_ = aux1.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
             double aux2 = (2*h) + int_min;
-            Expression f_aux1 = new Expression("f(" + aux1 + ")", f);
-            Expression f_aux2 = new Expression("f(" + aux2 + ")", f);
+            string aux2_ = aux2.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+
+            Expression f_aux1 = new Expression("f(" + aux1_ + ")", f);
+            Expression f_aux2 = new Expression("f(" + aux2_ + ")", f);
 
             return Math.Round(((3 * h) / 8) * (fmin.calculate() + (3 * f_aux1.calculate()) + (3 * f_aux2.calculate()) + fmax.calculate()), 5);
         }
