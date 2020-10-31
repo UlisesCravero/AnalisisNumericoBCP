@@ -879,7 +879,9 @@
             this.metodos_integracion.Items.AddRange(new object[] {
             "Trapecio simple",
             "Trapecios múltiples",
-            "Simpson 1/3 simple"});
+            "Simpson 1/3 simple",
+            "Simpson 1/3 múltiple",
+            "Simpson 3/8 simple"});
             this.metodos_integracion.Location = new System.Drawing.Point(162, 45);
             this.metodos_integracion.Name = "metodos_integracion";
             this.metodos_integracion.Size = new System.Drawing.Size(174, 24);
