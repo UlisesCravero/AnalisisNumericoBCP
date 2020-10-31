@@ -310,7 +310,13 @@ namespace WindowsFormsApp2
                     resultado = Trapecios_multiples(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text), int.Parse(cant_sub_int.Text));
                     break;
                 case 2:
-                    resultado = Simpson_untercio(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
+                    resultado = Simpson_untercio_simple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
+                    break;
+                case 3:
+                    resultado = Simpson_untercio_multiple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text), int.Parse(cant_sub_int.Text));
+                    break;
+                case 4:
+                    resultado = Simpson_tresoctavos_simple(funcion_a_integrar.Text, double.Parse(int_min.Text), double.Parse(int_max.Text));
                     break;
                 default:
                     MessageBox.Show("Ingrese los parámetros a calcular", "Parámetros inválidos");

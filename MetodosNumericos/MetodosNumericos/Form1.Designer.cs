@@ -89,7 +89,10 @@
             this.cant_pares = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.integral_obtenida = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.calcular_integral = new System.Windows.Forms.Button();
             this.cant_sub_int = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.int_max = new System.Windows.Forms.TextBox();
@@ -101,9 +104,6 @@
             this.metodos_integracion = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.calcular_integral = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.integral_obtenida = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -762,6 +762,23 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Valores de salida";
             // 
+            // integral_obtenida
+            // 
+            this.integral_obtenida.AutoSize = true;
+            this.integral_obtenida.Location = new System.Drawing.Point(147, 48);
+            this.integral_obtenida.Name = "integral_obtenida";
+            this.integral_obtenida.Size = new System.Drawing.Size(0, 17);
+            this.integral_obtenida.TabIndex = 1;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(23, 48);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(118, 17);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Integral obtenida:";
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.calcular_integral);
@@ -781,6 +798,16 @@
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Valores de entrada";
+            // 
+            // calcular_integral
+            // 
+            this.calcular_integral.Location = new System.Drawing.Point(280, 222);
+            this.calcular_integral.Name = "calcular_integral";
+            this.calcular_integral.Size = new System.Drawing.Size(114, 27);
+            this.calcular_integral.TabIndex = 20;
+            this.calcular_integral.Text = "Calcular";
+            this.calcular_integral.UseVisualStyleBackColor = true;
+            this.calcular_integral.Click += new System.EventHandler(this.calcular_integral_Click);
             // 
             // cant_sub_int
             // 
@@ -871,33 +898,6 @@
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
-            // 
-            // calcular_integral
-            // 
-            this.calcular_integral.Location = new System.Drawing.Point(280, 222);
-            this.calcular_integral.Name = "calcular_integral";
-            this.calcular_integral.Size = new System.Drawing.Size(114, 27);
-            this.calcular_integral.TabIndex = 20;
-            this.calcular_integral.Text = "Calcular";
-            this.calcular_integral.UseVisualStyleBackColor = true;
-            this.calcular_integral.Click += new System.EventHandler(this.calcular_integral_Click);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(23, 48);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(118, 17);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Integral obtenida:";
-            // 
-            // integral_obtenida
-            // 
-            this.integral_obtenida.AutoSize = true;
-            this.integral_obtenida.Location = new System.Drawing.Point(147, 48);
-            this.integral_obtenida.Name = "integral_obtenida";
-            this.integral_obtenida.Size = new System.Drawing.Size(0, 17);
-            this.integral_obtenida.TabIndex = 1;
             // 
             // Form1
             // 

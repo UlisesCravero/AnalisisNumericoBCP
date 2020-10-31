@@ -542,15 +542,61 @@ namespace MetodosNumericos
             return Math.Round(((h / 2) * (fmin.calculate() + (suma * 2) + fmax.calculate())), 5);
         }
 
-        public static double Simpson_untercio(string funcion, double int_min, double int_max)
+        public static double Simpson_untercio_simple(string funcion, double int_min, double int_max)
         {
             Function f = new Function("f(x)" + "=" + funcion);
             Expression fmin = new Expression("f(" + int_min + ")", f);
             Expression fmax = new Expression("f(" + int_max + ")", f);
-            Expression f_aux = new Expression("f(" + int_max + ")", f);
-
+            
             double h = (int_max - int_min) / 2;
+            double aux = h + int_min;
+            Expression f_aux = new Expression("f(" + aux + ")", f);
+
             return Math.Round((h / 3) * (fmin.calculate() + (4 * f_aux.calculate()) + fmax.calculate()),5);
         }
+        public static double Simpson_untercio_multiple(string funcion, double int_min, double int_max, int intervalos)
+        {
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression fmin = new Expression("f(" + int_min + ")", f);
+            Expression fmax = new Expression("f(" + int_max + ")", f);
+            
+            double h = (int_max - int_min) / intervalos;
+            
+            double pares = 0;
+            double impares = 0;
+
+            for (int i = 1; i <= intervalos-1; i++)
+            {
+                double aux = int_min + (i * h);
+                Expression f_aux = new Expression("f(" + aux + ")", f);
+                if (i%2 == 0)
+                {
+                    pares += f_aux.calculate();
+                }
+                else
+                {
+                    impares += f_aux.calculate();
+                }
+            }
+
+            return Math.Round((h / 3) * (fmin.calculate() + (4 * impares) + (2 * pares) + fmax.calculate()), 5);
+        }
+
+        public static double Simpson_tresoctavos_simple(string funcion, double int_min, double int_max)
+        {
+            Function f = new Function("f(x)" + "=" + funcion);
+            Expression fmin = new Expression("f(" + int_min + ")", f);
+            Expression fmax = new Expression("f(" + int_max + ")", f);
+
+            double h = (int_max - int_min) / 3;
+            double aux1 = h + int_min;
+            double aux2 = (2*h) + int_min;
+            Expression f_aux1 = new Expression("f(" + aux1 + ")", f);
+            Expression f_aux2 = new Expression("f(" + aux2 + ")", f);
+
+            return Math.Round(((3 * h) / 8) * (fmin.calculate() + (3 * f_aux1.calculate()) + (3 * f_aux2.calculate()) + fmax.calculate()), 5);
+        }
+
+
     }
 }
