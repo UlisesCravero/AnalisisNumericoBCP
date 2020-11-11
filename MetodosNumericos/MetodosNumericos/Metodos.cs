@@ -501,11 +501,11 @@ namespace MetodosNumericos
             {
                 if (res_aux.resultados[i] >= 0)
                 {
-                    res.funcion += $"+ {(Math.Round(res_aux.resultados[i], 2)).ToString("0." + new string('#', 339))}x^{i} ";
+                    res.funcion += $"+ {(Math.Round(res_aux.resultados[i], 3)).ToString("0." + new string('#', 339))}x^{i} ";
                 }
                 else
                 {
-                    res.funcion += $"{(Math.Round(res_aux.resultados[i], 2)).ToString("0." + new string('#', 339))}x^{i} ";
+                    res.funcion += $"{(Math.Round(res_aux.resultados[i], 3)).ToString("0." + new string('#', 339))}x^{i} ";
                 }
                 
             }
